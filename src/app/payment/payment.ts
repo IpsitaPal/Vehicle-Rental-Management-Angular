@@ -18,3 +18,6 @@ export class Payment {
 	}
 	
 }
+
+
+//booking - proceed to payment. - id - auto, date - current, mode - credit, payment status - success
