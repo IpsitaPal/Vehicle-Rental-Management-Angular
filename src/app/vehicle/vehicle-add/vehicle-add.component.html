@@ -1,1 +1,16 @@
 
+<form #vehicleForm = "ngForm" (ngSubmit)="submitAddForm(vehicleForm)">
+    Vehicle Name:
+    <input type = "text" [(ngModel)]="newVehicle"
+    name = "vehicle"
+    #prodControl = "ngModel"
+    required/>
+    <span
+    class="text-small text-danger"
+    *ngIf="prodControl.invalid && prodControl.touched">
+    vehicle Name Should Not Null
+</span>
+    <button type = "submit"
+     class = "btn btn-info">
+     Add</button>
+</form>

@@ -1,1 +1,29 @@
-<p>vehicle-list works!</p>
+<div class = "container mt-5">
+    <table class = "table table-striped table-bordered">
+    <caption style="caption-side: top;">
+        <thead>
+            <tr>
+                <td><h3>v Names</h3></td>
+                <td><button class ="btn btn-success" (click)='displayAddForm()'>Add Product
+                </button></td>
+                
+            
+            </tr>
+        </thead>
+    </caption>
+        <tr>
+            <th>Product Names</th>
+            <th>Delete Product</th>
+          
+        </tr>
+        <tbody>
+            <tr *ngFor= "let vehicle of vehicles"
+                
+               app-vehicle-show 
+                [vehicleName]='vehicle' 
+                (delete)='deleteProductParent($event)'></tr>
+      
+            </tr>
+        </tbody>
+    </table>
+    </div>

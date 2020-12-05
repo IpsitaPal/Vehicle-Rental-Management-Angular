@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-vehicle-show',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VehicleShowComponent implements OnInit {
 
-  constructor() { }
+  @Input() vehicleId: any;
+  @Output() delete = new EventEmitter();
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
   }
 
+  deleteVehicle(id: number){
+    this.delete.emit(id);
+  }
 }
