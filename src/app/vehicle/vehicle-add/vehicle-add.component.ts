@@ -16,20 +16,22 @@ capacity: String;
 chargesPerKM: number;
 fixedCharges: number;
 driver: Driver;
-  constructor(private ) { }
+  constructor( private vehicleService: VehicleService,
+    private router:Router) { }
+
 
   ngOnInit(): void {
-    add 
+    //add 
     let vehicleId={
     vehicleNumber: this.vehicleNumber,
       type: this.type ,
       category:  this.category,
-      this.description = description;
-      this.location = location;
-      this.capacity = capacity;
-      this.chargesPerKM = chargesPerKM;
-      this.fixedCharges = fixedCharges;
-      this.driver :null;
+      this.description : description,
+      this.location: location,
+      this.capacity:  capacity,
+      this.chargesPerKM: chargesPerKM,
+      this.fixedCharges:  fixedCharges,
+      this.driver: null
     }
   }
 
