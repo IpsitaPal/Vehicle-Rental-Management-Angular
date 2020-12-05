@@ -1,0 +1,26 @@
+<h3> Add Employee </h3>
+<form #payForm="ngForm" (ngSubmit)="add()">              
+  <p>
+		Enter Name on Card: <br>
+		<input 
+			type="text" 
+			required /> 
+		<!--span style="color:red;"
+			*ngIf="empName.invalid && empName.touched">
+			Name is required.
+    </span-->
+    <br>
+    Enter Name on Card: <br>
+		<input 
+			type="text" 
+			required /> 
+	</p>
+
+    <button 
+		type="submit"
+		class="btn btn-primary"
+		[disabled]="payForm.invalid">
+	Pay
+	</button>
+
+</form>

@@ -1,0 +1,30 @@
+
+<html>
+    <div class= "container mt-5">
+    <table class="table table-bordered">
+        <caption style="caption-side: top;">
+            <h3>My Booking</h3>
+            <button class="btn btn-success" >Add New Booking</button>
+            </caption>
+            <thead>
+                <tr>
+                    <th>Booking Id</th>
+                    <th>Booking From</th>
+                    <th>Booked Till</th>
+                    <th>booking Description</th>
+                    <th>Total Cost</th>
+                    <th>Distance</th>
+                    <th>Vehicle Details</th>
+                </tr>
+                </thead>
+        <!--<tbody>
+            <tr *ngFor = "let booking of bookings"
+                app-booking-show 
+                [booking] = "booking"
+                (update)='updateBookingParent($event)'
+                (delete)='deleteBookingParent($event)'>
+                </tr>
+        </tbody>-->
+        </table>
+    </div>
+</html>
