@@ -24,7 +24,6 @@ export class PaymentListComponent implements OnInit {
     this.paymentService.deletePayment(id).subscribe((response: any) => {
       this.allPayments = response;
     });
-
   }
 
 }

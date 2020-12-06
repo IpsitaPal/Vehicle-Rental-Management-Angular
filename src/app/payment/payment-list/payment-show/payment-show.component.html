@@ -1,11 +1,12 @@
-<td>{{payment.id}}</td>
-<td>{{payment.mode}}</td>
-<td>{{payment.status}}</td>
-<td>{{payment.date | date: 'dd/MM/yyyy'}}</td>
+<td>{{payment.paymentId}}</td>
+<td>{{payment.paymentMode}}</td>
+<td>{{payment.paymentStatus}}</td>
+<td>{{payment.paymentDate | date: 'dd/MM/yyyy'}}</td>
+
 <td>
     <button 
         class="btn btn-danger" 
-        (click)="deleteEmployee(payment.id)">
+        (click)="deleteEmployee(payment.paymentId)">
         Delete
     </button>
 </td>

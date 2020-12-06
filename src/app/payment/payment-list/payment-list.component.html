@@ -1,6 +1,29 @@
-<h3>Payments</h3>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		  
+		<div class="navbar-header">
+			<div class="navbar-brand"> 
+				<i class="material-icons">directions_car</i>
+				<span id="txt1">
+					Vehicle Rental Management System
+				</span>
+			</div>
+	  	</div>
+		
+		<ul class="nav navbar-nav navbar-right">
+			<li class="nav-item"><a href="#">Home</a></li>
+			<li class="nav-item"><a href="#">Book a Car</a></li>
+			<li class="nav-item"><a href="#">Logout</a></li>
+	  	</ul>
+		
+		  
+	</div>
+</nav>
 
-<table>
+
+<h1>All Payments</h1> <br>
+<div class="table-responsive">
+<table class="table table-striped">
 	<tr>
 		<th>ID</th>
 		<th>Mode</th>
@@ -14,3 +37,4 @@
 			(delete)="deletePaymentParent($event)">
 	</tr>
 </table>
+</div>
