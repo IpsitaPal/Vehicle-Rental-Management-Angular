@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "vehicle-rental-management"
+  "defaultProject": "vehicle-rental-management",
+  "cli": {
+    "analytics": "8ea88dab-af84-4d2b-9fe9-da5369faceb5"
+  }
 }

@@ -1,0 +1,58 @@
+  
+    #txt1{
+        font-size:25px;
+        line-height:24px;
+    }
+
+    .material-icons{
+        display: inline-flex;
+        vertical-align: top;
+    }  
+    
+    .navbar {
+        background: #059b43;
+    }
+  
+    .nav-link, .navbar-brand {
+        color: #fff;
+        cursor: pointer;
+    }
+
+      #form .container #form-row #form-column #form-box {
+
+        border-radius: 5px;
+        margin-top: 20px;
+        border: 1.5px solid #059b43;
+        background-color: #059b433d;
+        
+      }
+
+      label {
+        color: #025c27;
+      }
+
+      h1 {
+        text-align: center;
+        color: #025c27;
+      }
+
+      div {
+        position: center;
+      }
+
+      input[type=submit] {
+        width: 100%;
+        background-color: #059b43c0;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      input[type=submit]:hover {background-color: #30be6b}
+
+      select {
+        color: #000000;
+      }
+

@@ -1,26 +1,75 @@
-<h3> Add Employee </h3>
-<form #payForm="ngForm" (ngSubmit)="add()">              
-  <p>
-		Enter Name on Card: <br>
-		<input 
-			type="text" 
-			required /> 
-		<!--span style="color:red;"
-			*ngIf="empName.invalid && empName.touched">
-			Name is required.
-    </span-->
-    <br>
-    Enter Name on Card: <br>
-		<input 
-			type="text" 
-			required /> 
-	</p>
+<!-- A grey horizontal navbar that becomes vertical on small screens -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<a class="navbar-brand"> 
+		<i class="material-icons">payments</i>
+		<span id="txt1">
+			Safe Payment Gateway		
+		</span>
+	</a>
+</nav>
+<!--//name on card, cvc, expiration, -->
+<div id="form" >
+	<h1><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Payment Information</h1>
+	<div class="container center_div">
+		<div id="form-row" class="row justify-content-center align-items-center">
+			<div id="form-column" class="col-md-6 col-lg-6 col-md-offset-4">
+				<div id="form-box" class="col-md-12 col-lg-9">
+					<form id="payment-form" class="form" method="post">
+						<br>
+						<div class="form-group">
+							<label for="name" class="text-info">Name:</label><br>
+							<input 
+								type="text" 
+								name="name" 
+								id="name" 
+								class="form-control" 
+								required>
+						</div>
+						
+						<div class="form-group">
+							<label for="card-number" class="text-info">Card Number:</label><br>
+							<input 
+								type="text" 
+								pattern="[0-9]{16}" 
+								name="card-number" 
+								id="card-number" 
+								class="form-control"
+								required>
+						</div>
 
-    <button 
-		type="submit"
-		class="btn btn-primary"
-		[disabled]="payForm.invalid">
-	Pay
-	</button>
+						<div class="form-group">
+							<label for="cvv" class="text-info">CVV:</label><br>
+							<input 
+								type="text" 
+								pattern="[0-9]{3}" 
+								name="cvv" 
+								id="cvv" 
+								class="form-control"
+								required>
+						</div>
+						
+						<div class="form-group">
+							<label for="expiration-date" class="text-info">Expiration Date:</label><br>
+							<input 
+								type="date" 
+								min="2021-01-01" 
+								max="2030-12-31" 
+								name="expiration-date" 
+								id="expiration-date" 
+								class="form-control"
+								required>
+						</div>
 
-</form>
+						<div class="form-group">
+							<input 
+								type="submit" 
+								name="submit" 
+								value="Pay">
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
