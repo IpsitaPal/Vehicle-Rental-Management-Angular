@@ -1,1 +1,16 @@
-<p>payment-list works!</p>
+<h3>Payments</h3>
+
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Mode</th>
+		<th>Date</th>
+		<th>Status</th>
+		<th></th>
+	</tr>
+	<tr *ngFor="let payment of allPayments;"
+            payment-show
+			[payment]=payment
+			(delete)="deletePaymentParent($event)">
+	</tr>
+</table>

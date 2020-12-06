@@ -1,1 +1,11 @@
-<p>payment-show works!</p>
+<td>{{payment.id}}</td>
+<td>{{payment.mode}}</td>
+<td>{{payment.status}}</td>
+<td>{{payment.date | date: 'dd/MM/yyyy'}}</td>
+<td>
+    <button 
+        class="btn btn-danger" 
+        (click)="deleteEmployee(payment.id)">
+        Delete
+    </button>
+</td>
