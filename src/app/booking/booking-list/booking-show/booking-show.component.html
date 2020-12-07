@@ -1,1 +1,32 @@
-<p>booking-show works!</p>
+<td>{{booking.bookingId}}</td>
+<td>{{booking.bookingDate}}</td>
+<td>{{booking.bookedTillDate}}</td>
+<td>{{booking.bookingDescription}}</td>
+<td>{{booking.totalCost}}</td>
+<td>{{booking.distance}}</td>
+<td>{{booking.customer.customerId}}</td>
+<td>{{booking.vehicle.vehicleId}}</td>
+<td>
+    
+       <i class="material-icons" style="display: inline-block; cursor: pointer;" (click)='deleteBooking(booking.bookingId)'>
+           delete</i>
+    
+</td>
+<td>
+    <button class= 'btn btn-primary'
+    (click)='updateBooking(booking)'>
+    Edit
+    </button>
+</td>
+    <!--<span *ngIf='displayEdit'>
+    <td>
+        <input type='text' [(ngModel)]='updatedBooking'/>
+    </td>
+    <td>
+        <button 
+        class="btn btn-primary"
+        (click) = "updateBooking(booking)">
+        Update
+        </button>
+    </td>
+    </span>-->

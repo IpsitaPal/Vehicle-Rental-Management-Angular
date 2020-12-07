@@ -13,6 +13,8 @@ import { PaymentEditComponent } from './payment/payment-edit/payment-edit.compon
 import { TitleComponent } from './title/title.component';
 import { BookingListComponent } from './booking/booking-list/booking-list.component';
 import { BookingAddComponent } from './booking/booking-add/booking-add.component';
+import { BookingEditComponent } from './booking/booking-edit/booking-edit.component';
+import { BookingShowComponent } from './booking/booking-list/booking-show/booking-show.component';
 import { VehicleListComponent } from './vehicle/vehicle-list/vehicle-list.component';
 import { VehicleAddComponent } from './vehicle/vehicle-add/vehicle-add.component';
 import { VehicleUpdateComponent } from './vehicle/vehicle-update/vehicle-update.component';
@@ -29,7 +31,9 @@ import { VehicleShowComponent } from './vehicle/vehicle-list/vehicle-show/vehicl
     PaymentEditComponent,
     TitleComponent,
     BookingListComponent,
+    BookingShowComponent,
     BookingAddComponent,
+    BookingEditComponent,
     VehicleListComponent,
     VehicleShowComponent,
     VehicleAddComponent,
