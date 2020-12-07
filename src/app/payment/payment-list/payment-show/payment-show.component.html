@@ -1,12 +1,14 @@
 <td>{{payment.paymentId}}</td>
+<td>{{payment.booking.totalCost}}</td>
 <td>{{payment.paymentMode}}</td>
 <td>{{payment.paymentStatus}}</td>
 <td>{{payment.paymentDate | date: 'dd/MM/yyyy'}}</td>
-
-<td>
+<td>{{payment.booking.bookingId}}</td>
+<td>{{payment.booking.customer.firstName}} {{payment.booking.customer.lastName}}</td>
+<td>{{payment.booking.vehicle.vehicleNumber}}</td>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     <button 
         class="btn btn-danger" 
-        (click)="deleteEmployee(payment.paymentId)">
-        Delete
+        (click)="cancelPayment(payment.paymentId)">
+        Cancel
     </button>
-</td>

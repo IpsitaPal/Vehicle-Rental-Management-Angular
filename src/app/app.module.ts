@@ -9,7 +9,6 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentListComponent } from './payment/payment-list/payment-list.component';
 import { PaymentShowComponent } from './payment/payment-list/payment-show/payment-show.component';
 import { PaymentAddComponent } from './payment/payment-add/payment-add.component';
-import { PaymentEditComponent } from './payment/payment-edit/payment-edit.component';
 import { TitleComponent } from './title/title.component';
 import { BookingListComponent } from './booking/booking-list/booking-list.component';
 import { BookingAddComponent } from './booking/booking-add/booking-add.component';
@@ -33,7 +32,6 @@ import { CustomerShowComponent } from './customer/customer-list/customer-show/cu
     PaymentListComponent,
     PaymentShowComponent,
     PaymentAddComponent,
-    PaymentEditComponent,
     TitleComponent,
     BookingListComponent,
     BookingShowComponent,

@@ -18,7 +18,7 @@ export class PaymentShowComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteEmployee(id: number) {
+  cancelPayment(id: number) {
     this.delete.emit(id);
   }
 

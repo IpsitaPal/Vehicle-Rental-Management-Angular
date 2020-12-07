@@ -1,7 +1,7 @@
 h1 {
     color: #0e110f;
     font-family: "Times New Roman", Times, serif;
-    text-decoration: underline;
+    padding-left: 20px;
 }
 
 table {
@@ -19,3 +19,9 @@ td, th {
 th {
     background: #303f368f;
 }
+
+th.noBorder {
+    border: 0;
+  }
+
+

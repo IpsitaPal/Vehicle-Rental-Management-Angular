@@ -1,19 +1,41 @@
-<h1>All Payments</h1> <br>
+<h1>All Payments</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-8"></div>
+		<div class="col-4" style="align-items: right;">
+			<form>
+				<input type="text" placeholder="Enter ID" [(ngModel)]=id name="id">
+				<select (change)="findBy($event)">
+			  		<option value="">Select</option>
+			  		<option value="customer">Customer ID</option>
+			  		<option value="booking">Booking ID</option>
+				</select>
+			</form>
+		</div>
+	</div>
+</div>
+	<br>
 <div class="table-responsive">
-	<div class="col-10">
+	<div class="col-12">
 		<table class="table">
 			<tr>
 				<th>ID</th>
+				<th>Amount</th>
 				<th>Mode</th>
 				<th>Status</th>
 				<th>Date</th>
-				<th></th>
+				<th>Booking ID</th>
+				<th>Customer Name</th>
+				<th>Vehicle Number</th>
 			</tr>
 			<tr *ngFor="let payment of allPayments;"
             	payment-show
 				[payment]=payment
-				(delete)="deletePaymentParent($event)">
+				(delete)="deletePaymentParent($event)"
+				class="dropdown">
 			</tr>
 		</table>
+		<div *ngIf = "errorMessage == '' else elseBlock"></div>
+		<ng-template #elseBlock><h4>{{errorMessage}}</h4></ng-template>
 	</div>
 </div>
