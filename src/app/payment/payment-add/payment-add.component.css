@@ -10,7 +10,7 @@
     }  
     
     .navbar {
-        background: #059b43;
+        background: #059b43 !important;
     }
   
     .nav-link, .navbar-brand {

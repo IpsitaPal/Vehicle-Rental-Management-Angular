@@ -8,6 +8,7 @@ import { PaymentListComponent } from './payment/payment-list/payment-list.compon
 import { BookingAddComponent } from './booking/booking-add/booking-add.component';
 import { BookingEditComponent } from './booking/booking-edit/booking-edit.component';
 import { BookingListComponent } from './booking/booking-list/booking-list.component';
+import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
 
 const routes: Routes = [
   {path: 'vehicle', component: VehicleListComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'payment/add', component: PaymentAddComponent},
   {path: 'booking', component:BookingListComponent},
   {path: 'booking-add', component:BookingAddComponent},
-  {path: 'booking-edit', component:BookingEditComponent}
+  {path: 'booking-edit', component:BookingEditComponent},
+  {path: 'customer/add', component: CustomerAddComponent},
 ];
 
 @NgModule({

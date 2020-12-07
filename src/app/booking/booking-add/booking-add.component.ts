@@ -35,7 +35,7 @@ export class BookingAddComponent implements OnInit {
     console.log(bookingForm)
     this.bookingService.addBooking(this.booking).subscribe((response: any)=>{
       console.log(response);
-      this.router.navigate(['/booking']);
+      this.router.navigate(['/payment/add']);
     },
     (exception: any)=>{
       console.log(JSON.stringify(exception));

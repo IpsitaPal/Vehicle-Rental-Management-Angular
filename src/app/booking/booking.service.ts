@@ -13,7 +13,7 @@ export class BookingService {
     return this.httpClient.get("http://localhost:8000/ovms/booking/" + bookingId);
   }
   getAllBookings(): any{
-    return this.httpClient.get("http://localhost:8000/ovms/bookings");
+    return this.httpClient.get("http://localhost:8080/ovms/bookings");
   }
  
   deleteBooking(bookingId :number): any{
@@ -21,7 +21,7 @@ export class BookingService {
   }
 
   addBooking(booking: Booking): any{
-    return this.httpClient.post("http://localhost:8000/ovms/booking/", booking);
+    return this.httpClient.post("http://localhost:8080/ovms/booking/", booking);
   }
 
   updateBooking(booking: Booking): any{

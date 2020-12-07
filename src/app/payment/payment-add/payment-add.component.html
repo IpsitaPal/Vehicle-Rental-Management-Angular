@@ -12,7 +12,7 @@
 	<h1><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Payment Information</h1>
 	<div class="container center_div">
 		<div id="form-row" class="row justify-content-center align-items-center">
-			<div id="form-column" class="col-md-6 col-lg-6 col-md-offset-4">
+			<div id="form-column" class="col-md-6 col-lg-7 col-md-offset-6">
 				<div id="form-box" class="col-md-12 col-lg-9">
 					<form id="payment-form" class="form" (ngSubmit)="add()">
 						<br>
@@ -22,12 +22,13 @@
 								type="text" 
 								name="name" 
 								id="name" 
+								placeholder="Name"
 								class="form-control" 
-								(ngModel)=cardName
-								#name="ngModel"
+								(ngModel)=cardDetail
+								#cardName="ngModel"
 								required>
 							<span style="color:red;"
-								*ngIf="name.invalid && name.touched">
+								*ngIf="cardName.invalid && cardName.touched">
 								Name is required.
 							</span>
 						</div>
@@ -39,8 +40,15 @@
 								pattern="[0-9]{16}" 
 								name="card-number" 
 								id="card-number" 
+								placeholder="Card Number"
 								class="form-control"
+								(ngModel)=cardDetail
+								#cardNumber="ngModel"
 								required>
+							<span style="color:red;"
+								*ngIf="cardNumber.invalid && cardNumber.touched">
+								Card Number is invalid
+							</span>
 						</div>
 
 						<div class="form-group">
@@ -50,20 +58,28 @@
 								pattern="[0-9]{3}" 
 								name="cvv" 
 								id="cvv" 
+								placeholder="CVV"
 								class="form-control"
+								(ngModel)=cardDetail
+								#cardCVV="ngModel"
 								required>
+							<span style="color:red;"
+								*ngIf="cardCVV.invalid && cardCVV.touched">
+								CVV is invalid
+							</span>
 						</div>
 						
 						<div class="form-group">
 							<label for="expiration-date" class="text-info">Expiration Date:</label><br>
-							<input 
-								type="date" 
-								min="2021-01-01" 
-								max="2030-12-31" 
-								name="expiration-date" 
-								id="expiration-date" 
-								class="form-control"
-								required>
+							
+							<div class="row">
+								<div class="col">
+							  		<input type="number" class="form-control" placeholder="Month" min=1 max=12>
+								</div>
+								<div class="col">
+							  		<input type="number" class="form-control" placeholder="Year" min=2021 max=2025>
+								</div>
+						  	</div>
 						</div>
 
 						<div class="form-group">

@@ -20,6 +20,11 @@ import { VehicleAddComponent } from './vehicle/vehicle-add/vehicle-add.component
 import { VehicleUpdateComponent } from './vehicle/vehicle-update/vehicle-update.component';
 import { VehicleViewComponent } from './vehicle/vehicle-view/vehicle-view.component';
 import { VehicleShowComponent } from './vehicle/vehicle-list/vehicle-show/vehicle-show.component';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
+import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CustomerShowComponent } from './customer/customer-list/customer-show/customer-show.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,12 @@ import { VehicleShowComponent } from './vehicle/vehicle-list/vehicle-show/vehicl
     VehicleShowComponent,
     VehicleAddComponent,
     VehicleUpdateComponent,
-    VehicleViewComponent
+    VehicleViewComponent,
+    CustomerComponent,
+    CustomerAddComponent,
+    CustomerEditComponent,
+    CustomerListComponent,
+    CustomerShowComponent
   ],
   imports: [
     BrowserModule,
