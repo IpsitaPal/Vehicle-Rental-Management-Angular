@@ -14,7 +14,7 @@
 		<div id="form-row" class="row justify-content-center align-items-center">
 			<div id="form-column" class="col-md-6 col-lg-6 col-md-offset-4">
 				<div id="form-box" class="col-md-12 col-lg-9">
-					<form id="payment-form" class="form" method="post">
+					<form id="payment-form" class="form" (ngSubmit)="add()">
 						<br>
 						<div class="form-group">
 							<label for="name" class="text-info">Name:</label><br>
@@ -23,7 +23,13 @@
 								name="name" 
 								id="name" 
 								class="form-control" 
+								(ngModel)=cardName
+								#name="ngModel"
 								required>
+							<span style="color:red;"
+								*ngIf="name.invalid && name.touched">
+								Name is required.
+							</span>
 						</div>
 						
 						<div class="form-group">

@@ -4,16 +4,15 @@ export class Payment {
     paymentId: number;
 	paymentMode: String;
 	paymentDate: Date;
-	//booking: Booking;
+	booking: Booking;
     paymentStatus: String;
 
     constructor(paymentId: number, paymentMode: String, paymentDate: Date, 
-			//booking: Booking, 
-			paymentStatus: String) {
+			booking: Booking, paymentStatus: String) {
         this.paymentId = paymentId;
 		this.paymentMode = paymentMode;
 		this.paymentDate = paymentDate;
-		///this.booking = booking;
+		this.booking = booking;
 		this.paymentStatus = paymentStatus;
 	}
 	
