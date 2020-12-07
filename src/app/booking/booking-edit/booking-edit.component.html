@@ -1,0 +1,113 @@
+<div  class="content container-fluid">
+    <h2>Edit Booking</h2>
+    <form #bookingEditForm="ngForm" (ngSubmit)="submitEditForm()">
+      <div class="form-group row">
+        <label for="bookingId" class="col-sm-2 col-form-label">Booking ID:</label>
+        <div class="col-sm-10">
+          <div>{{updatedBooking.bookingId}}</div>
+          
+          <!--<input
+            //changed the updateEmployee at ngModel at
+            type="number"
+            [(ngModel)]="updatedEmployee.id"
+            name="empId"
+            #empControl="ngModel"
+            *ngIf = "editing"
+            required
+          />-->
+          <br />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="bookingDate" class="col-sm-2 col-form-label">bookingDate:</label>
+        <div class="col-sm-10">
+          <!--<div>{{updatedBooking.bookingDate}}</div>-->
+          <input
+            type="date"
+            [(ngModel)]="updatedBooking.bookingDate"
+            name="bookingDate"
+            #empControl="ngModel"
+            required
+          /><br />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="bookedTillDate" class="col-sm-2 col-form-label">bookedTillDate:</label>
+        <div class="col-sm-10">
+          <!--<div *ngIf="!editing">{{updatedBooking.bookedTillDate}}</div>-->
+          <input
+            type="date"
+            [(ngModel)]="updatedBooking.bookedTillDate"
+            name="bookedTillDate"
+            #empControl="ngModel"
+            required
+          /><br />
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label for="bookingDescription" class="col-sm-2 col-form-label">description:</label>
+        <div class="col-sm-10">
+          <!--<div *ngIf="!editing">{{updatedBooking.bookingDescription}}</div>-->
+          <input
+          type="text"
+            [(ngModel)]="updatedBooking.bookingDescription"
+            name="bookingDescription"
+            #empControl="ngModel"
+          />
+          <br />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="distance" class="col-sm-2 col-form-label">distance:</label>
+        <div class="col-sm-10">
+          <!--<div *ngIf="!editing">{{updatedBooking.distance}}</div>-->
+          <input
+          type="number"
+            [(ngModel)]="updatedBooking.distance"
+            name="distance"
+            #empControl="ngModel"
+          />
+          <br />
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label for="customerId" class="col-sm-2 col-form-label">customer:</label>
+        <div class="col-sm-10">
+          <!--<div *ngIf="!editing">{{updatedBooking.customer}}</div>-->
+          <input
+          type="number"
+            [(ngModel)]="updatedBooking.customer.customerId"
+            name="customerId"
+            #empControl="ngModel"/>
+          <br />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="vehicleId" class="col-sm-2 col-form-label">vehicle:</label>
+        <div class="col-sm-10">
+          <!--<div *ngIf="!editing">{{updatedBooking.vehicle}}</div>-->
+          <input
+          type="number"
+            [(ngModel)]="updatedBooking.vehicle.vehicleId"
+            name="vehicleId"
+            #empControl="ngModel"
+          />
+          <br />
+        </div>
+      </div>
+
+      <!--<div class="form-group row">
+        <button type="button" class="btn btn-secondary" (click) = "editing = !editing">
+          Edit
+        </button>
+      </div>-->
+      <div style='margin:0 4px 0 4px' class="form-group row">
+        <input type="submit" class="btn btn-info" value="Update">
+      </div>
+    </form>
+  </div>
+  
