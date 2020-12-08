@@ -1,5 +1,5 @@
-import { Customer } from '../customer';
-import { Vehicle } from '../vehicle';
+import { Customer } from './customer';
+import { Vehicle } from './vehicle';
 
 export class Booking{
     bookingId: number;

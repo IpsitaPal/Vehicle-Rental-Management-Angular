@@ -1,4 +1,4 @@
-import { Booking } from '../booking/booking';
+import { Booking } from './booking';
 
 export class Payment {
     paymentId: number;
