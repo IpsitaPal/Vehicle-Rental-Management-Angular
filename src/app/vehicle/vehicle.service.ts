@@ -13,17 +13,22 @@ export class VehicleService {
     return this.httpClient.post("http://localhost:8090/ovms/vehicle", vehicle);
   }
 
-  deleteVehicle(id: number): any {
-    return this.httpClient.delete("http://localhost:8090/ovms/vehicle/" + id);
+  deleteVehicle(vehicleId: number): any {
+    return this.httpClient.delete("http://localhost:8090/ovms/vehicle/" + vehicleId);
   }
 
-  getVehicle(): any {
+  updateVehicle(vehicle: Vehicle): any{
+    return this.httpClient.put("http://localhost:8090/ovms/vehicle/", vehicle);
+  }
+
+  getAllVehicles(): any {
     return this.httpClient.get("http://localhost:8090/ovms/vehicle");
   }
 
 
-  getAllVehicle(id: number): any {
-    return this.httpClient.get("http://localhost:8090/ovms/vehicle/" + id);
+  getVehicle(vehicleId: number): any {
+    return this.httpClient.get("http://localhost:8090/ovms/vehicle/" + vehicleId);
   }
 
+ 
 }

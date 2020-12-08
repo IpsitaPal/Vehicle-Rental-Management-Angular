@@ -1,16 +1,166 @@
+<html>
+<div class="content container-fluid">
+    <h2>Add New Vehicle</h2>
+    <h6 class="text-danger">
+        {{ formValidErrorMessage }}</h6>
+    <form #vehicleForm="ngForm" (ngSubmit)="submitAddForm(vehicleForm)">
 
-<form #vehicleForm = "ngForm" (ngSubmit)="submitAddForm(vehicleForm)">
-    Vehicle Name:
-    <input type = "text" [(ngModel)]="newVehicle"
-    name = "vehicle"
-    #prodControl = "ngModel"
-    required/>
-    <span
-    class="text-small text-danger"
-    *ngIf="prodControl.invalid && prodControl.touched">
-    vehicle Name Should Not Null
-</span>
-    <button type = "submit"
-     class = "btn btn-info">
-     Add</button>
-</form>
+        <!-- <div class="form-group row">
+            <label for="type" class="col-sm-2 col-form-label">Vehicle Id:</label>
+            <div class="col-sm-10">
+                <input type="number" [(ngModel)]="newVehicle.vehicleId" name="vehicleId" #vehicleControl="ngModel"
+                     required /><br />
+            </div>
+        </div>-->
+
+        <div class="form-group row">
+            <label for="vehicleNumber" class="col-sm-2 col-form-label">Vehicle Number:</label>
+            <div class="col-sm-10">
+                <input type="text" [(ngModel)]="newVehicle.vehicleNumber" name="vehicleNumber" #vehicleControl="ngModel"
+                    placeholder="Should be of 10 characters" required /><br />
+                    <span
+                    class="text-small text-danger"
+                    *ngIf="vehicleControl.invalid && vehicleControl.touched" >
+                    Vehicle Number is required
+                </span>
+                </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="type" class="col-sm-2 col-form-label">Vehicle Type:</label>
+            <div class="col-sm-10">
+                <input type="text" [(ngModel)]="newVehicle.type" name="vehicletype" #vehicleControl="ngModel"
+                    placeholder="car/bike" required /><br />
+                    <span
+                    class="text-small text-danger"
+                    *ngIf="vehicleControl.invalid && vehicleControl.touched" >
+                      Select either car or bike
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="category" class="col-sm-2 col-form-label">Vehicle Category:</label>
+            <div class="col-sm-10">
+               <!-- <form >
+        
+                    <input type="radio" id="category" name="category" value="category">
+                    <label for="category">AC</label><br>
+                    <input type="radio" id="category" name="category" value="category">
+                    <label for="category">Non-AC</label><br>
+                    </form>
+                </div>
+            </div>-->
+               <input type = "text" [(ngModel)]="newVehicle.category"
+    name = "vehiclecategory"
+    #vehicleControl = "ngModel"
+    placeholder="Choose Category"
+    required/><br />
+</div></div>
+                <!--<input type="radio" [(ngModel)]="newVehicle.category"
+name = "vehiclecategory"
+    #vehicleControl = "ngModel"
+    value="Ac"/>
+    <label for="Ac" class="radio-inline">Ac</label><br>-->
+
+    
+           <!--     <label class="radio-inline">
+                    <input type="radio" name="optradio">Ac
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="optradio">Non-Ac
+                </label>-->
+
+                <!--<input type="radio" [(ngModel)]="newVehicle.category"
+name = "vehiclecategory" value="Non-Ac"/>
+<label for="Non-Ac" class="radio-inline">Non-Ac</label><br/>-->
+           
+
+        <!--<form>
+    <input type="radio" id="Ac" name="Ac" value="Ac">
+    <label for="Ac">Ac</label><br>
+    <input type="radio" id="Non-Ac" name="Non-Ac" value="Non-Ac">
+    <label for="Non-Ac">Non-Ac</label><br>    
+  
+    <div class="container">
+        <h2>Form control: inline radio buttons</h2>
+        <p>The form below contains three inline radio buttons:</p>
+        <form>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" checked>Option 1
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio">Option 2
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio">Option 3
+          </label>
+        </form>
+      </div>-->
+
+        <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label">Vehicle Description:</label>
+            <div class="col-sm-10">
+                <input type="text" [(ngModel)]="newVehicle.description" name="vehicleDescription"
+                    #vehicleControl="ngModel" placeholder="Describe About" required /><br />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="location" class="col-sm-2 col-form-label">Vehicle Location:</label>
+            <div class="col-sm-10">
+                <input type="text" [(ngModel)]="newVehicle.location" name="vehicleLocation" #vehicleControl="ngModel"
+                    placeholder="Enter your location" required /><br />
+                    <span
+                    class="text-small text-danger"
+                    *ngIf="vehicleControl.invalid && vehicleControl.touched" >
+                    Location is required
+                </span>
+                </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="capacity" class="col-sm-2 col-form-label">Vehicle Capacity:</label>
+            <div class="col-sm-10">
+                <input type="text" [(ngModel)]="newVehicle.capacity" name="vehicleCapacity" #vehicleControl="ngModel"
+                    placeholder="Number of seaters" required /><br />
+                    <span
+                    class="text-small text-danger"
+                    *ngIf="vehicleControl.invalid && vehicleControl.touched" >
+                    Capacity is required
+                </span>
+             </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="chargesPerKM" class="col-sm-2 col-form-label">Vehicle ChargesPerKM:</label>
+            <div class="col-sm-10">
+                <input type="number" [(ngModel)]="newVehicle.chargesPerKM" name="vehicleChargesPerKM"
+                    #vehicleControl="ngModel" placeholder="Choose ChargesPerKM" required /><br />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="fixedCharges" class="col-sm-2 col-form-label">Vehicle FixedCharges:</label>
+            <div class="col-sm-10">
+
+                <input type="number" [(ngModel)]="newVehicle.fixedCharges" name="vehicleFixedCharges"
+                    #vehicleControl="ngModel" placeholder="Choose FixedCharges" required /><br />
+            </div>
+        </div>
+
+      <!-- <div class="form-group row">
+            <label for="driver" class="col-sm-2 col-form-label">Driver:</label>
+            <div class="col-sm-10">
+                <input type="number" [(ngModel)]="newVehicle.driver.driverId" name="driverId" #vehicleControl="ngModel"
+                    placeholder="Choose driver" required /><br />
+            </div>
+        </div>-->
+
+        <button type="submit" class="btn btn-info" [disabled]="vehicleForm.invalid">
+            Add</button>
+    </form>
+</div>
+
+</html>

@@ -1,6 +1,6 @@
 import { Driver } from './driver';
 
-export class Vehicle {
+export interface Vehicle {
     vehicleId: number;
     vehicleNumber: String;
     type: String;
@@ -12,7 +12,7 @@ export class Vehicle {
     fixedCharges: number;
     driver: Driver;
 
-    constructor(vehicleId: number, vehicleNumber: String, type: String, category: String, description: String,
+   /* constructor(vehicleId: number, vehicleNumber: String, type: String, category: String, description: String,
         location: String, capacity: String, chargesPerKM: number, fixedCharges: number, driver: Driver) {
 
         this.vehicleId = vehicleId;
@@ -26,6 +26,6 @@ export class Vehicle {
         this.fixedCharges = fixedCharges;
         this.driver = driver;
 
-    }
+    }*/
 }
 

@@ -1,29 +1,61 @@
-<div class = "container mt-5">
-    <table class = "table table-striped table-bordered">
-    <caption style="caption-side: top;">
-        <thead>
-            <tr>
-                <td><h3>v Names</h3></td>
-                <td><button class ="btn btn-success" (click)='displayAddForm()'>Add Product
-                </button></td>
-                
-            
-            </tr>
-        </thead>
-    </caption>
-        <tr>
-            <th>Product Names</th>
-            <th>Delete Product</th>
-          
-        </tr>
-        <tbody>
-            <tr *ngFor= "let vehicle of vehicles"
-                
-               app-vehicle-show 
-                [vehicleName]='vehicle' 
-                (delete)='deleteProductParent($event)'></tr>
+<html>
+    <div class=" left row ">
+       
+        <button style='margin: 0 8px 0 8px' class=" btn btn-success" (click)='displayAddForm()'>Add New Vehicle</button>
+        <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAllForm()'>View All </button>
+    </div>
+
+    <form style='margin:0 8px 0 8px' class="form-inline searchVhcl" #vehicleByVhclIdForm="ngForm" 
+    (ngSubmit)="searchByVhclIdForm(searchByVhclId)">
+<h6 class="text-danger">{{searchByVhclIdErrorMessage}} </h6>
+<input
+type="number"
+[(ngModel)]="searchByVhclId"
+name="searchByVhclId"
+#vehicleVhclIdControl="ngModel"
+placeholder="Vehicle ID"
+required/>
+<button style='margin:0 8px 0 8px'
+type="submit"
+class="btn btn-info"
+[disabled]="vehicleVhclIdControl.invalid"
+>
+Vehicle ID
+</button>
+
+</form>
+
+<div class=" vehicleName ">
+  <h4 >Vehicles</h4>
+</div>
+<div class= " content container mt-5" >
+<table class="table table-wrapper table-bordered table-hover">
+  <thead class="thead-dark ">
+      <tr>
+          <th>vehicleId</th>
+          <th>vehicleNumber</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Capacity</th>
+          <th>Charges Per KM</th>
+          <th>Fixed Charges</th>
+       <!--   <th>Driver</th>-->
+          <th></th>
+         <!-- <th>Book</th>-->
+          <th>Edit</th>
+      </tr>
+      </thead> 
       
-            </tr>
-        </tbody>
+      <tbody>
+        <tr *ngFor = "let vehicle of vehicles"
+            app-vehicle-show 
+            [vehicle] = vehicle
+            (update)="updateVehicleParent($event)"
+            (delete)="deleteVehicleParent($event)">
+        </tr>
+    </tbody>
     </table>
     </div>
+    </html>
