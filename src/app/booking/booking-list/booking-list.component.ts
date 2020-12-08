@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Booking } from 'src/app/booking';
-import { ComponentService } from 'src/app/component.service';
 import { Payment } from 'src/app/payment';
+import { PaymentService } from 'src/app/payment/payment.service';
+import { BookingService } from '../booking.service';
 
 @Component({
   selector: 'app-booking-list',
@@ -22,14 +23,15 @@ export class BookingListComponent implements OnInit {
   paymentErrorMessage: String = '';
   //searchByCustIdErrorMessage: any;
   
-  constructor(private service: ComponentService, private router: Router) { }
+  constructor(private bookingService: BookingService, private router: Router,
+                  private paymentService: PaymentService) { }
 
   ngOnInit(): void {
-    this.service.getAllPayments().subscribe(
+    this.paymentService.getAllPayments().subscribe(
       (response: any[])=> {    this.payments = response;   },
       (exception: any) => {    this.paymentErrorMessage = exception.error.message;          }
   );
-    this.service.getAllBookings().subscribe((response: any)=>{
+    this.bookingService.getAllBookings().subscribe((response: any)=>{
       console.log("Get all"+ response);
       this.bookings=response;
     })
@@ -38,17 +40,19 @@ export class BookingListComponent implements OnInit {
   displayAddForm(){
     this.router.navigate(['/booking-add']);
   }
-  updateBookingParent(booking: any){
-    this.router.navigate(['/booking-edit'], {queryParams: booking })
+  
+  updateBookingParent(bookingId: any){	
+    // this.router.navigate(['/booking-edit'], {queryParams: bookingId })	
+    this.router.navigate(['/booking-edit' ,bookingId ]); 
   }
-
+  
   deleteBookingParent(bookingId: any){
     this.searchByCustId="";
     this.searchByDate="";
     this.deleteErrorMessage="";
     this.searchByDateErrorMessage="";
     this.searchByCustIdErrorMessage="";
-    this.service.deleteBooking(bookingId).subscribe((response: any)=>{
+    this.bookingService.deleteBooking(bookingId).subscribe((response: any)=>{
       this.bookings = response;
     },
     (exception: any)=>{
@@ -62,7 +66,7 @@ export class BookingListComponent implements OnInit {
     this.deleteErrorMessage="";
     this.searchByDateErrorMessage="";
     this.searchByCustIdErrorMessage=""; 
-    this.service.getBookingsByBoookingDate(searchByDate).subscribe((response: any)=>{
+    this.bookingService.getBookingsByBoookingDate(searchByDate).subscribe((response: any)=>{
       this.bookings = response;
     },
     (exception: any)=>{
@@ -72,13 +76,13 @@ export class BookingListComponent implements OnInit {
   }
 
   
-  displayViewAllForm(){
+  displayViewAll(){
     this.searchByDate="";
     this.searchByCustId="";
     this.deleteErrorMessage="";
     this.searchByDateErrorMessage="";
     this.searchByCustIdErrorMessage="";
-    this.service.getAllBookings().subscribe((response: any)=>{
+    this.bookingService.getAllBookings().subscribe((response: any)=>{
       console.log("Get all"+ response);
       this.bookings=response;
     })
@@ -89,7 +93,7 @@ export class BookingListComponent implements OnInit {
     this.deleteErrorMessage="";
     this.searchByDateErrorMessage=""; 
     this.searchByCustIdErrorMessage="";
-    this.service.getBookingsByCustomer(searchByCustId).subscribe((response: any)=>{
+    this.bookingService.getBookingsByCustomer(searchByCustId).subscribe((response: any)=>{
       this.bookings = response;
     },
     (exception: any)=>{
@@ -99,7 +103,7 @@ export class BookingListComponent implements OnInit {
   }
 
   showPaymentParent(booking: any) {
-    this.service.getAllPaymentsByBooking(booking.bookingId)
+    this.paymentService.getAllPaymentsByBooking(booking.bookingId)
         .subscribe((response: Payment) => { this.payment = response }
       );
   }

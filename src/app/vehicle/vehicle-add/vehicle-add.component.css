@@ -1,0 +1,12 @@
+.content {
+    overflow: auto;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 120px;
+  }
+
+  input.ng-touched.ng-invalid{
+    border:1px solid red;
+  }

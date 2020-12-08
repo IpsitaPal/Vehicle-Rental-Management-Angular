@@ -2,7 +2,7 @@
     <div class=" left row ">
        
         <button style='margin: 0 8px 0 8px' class=" btn btn-success" (click)='displayAddForm()'>Add New Booking</button>
-        <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAllForm()'>View All </button>
+        <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAll()'>View All </button>
     </div>
     
         <form style='margin:0 8px 0 8px' class="form-inline right" #bookingByDateForm="ngForm"
@@ -25,6 +25,24 @@
             
         </form>
     
+    <!-- <form style='margin:0 8px 0 8px' class="form-inline bookingIdSearch" #bookingByBookingIdForm="ngForm" 
+        (ngSubmit)="searchByBookingIdForm(searchByBookingId)">
+        <h6 class="text-danger">{{searchByCustIdErrorMessage}} </h6>
+        <input
+            type="number"
+            [(ngModel)]="searchByBookingId"
+            name="searchByBookingId"
+            #bookingBookingIdControl="ngModel"
+            placeholder="Booking ID"
+            required/>
+        <button style='margin:0 8px 0 8px'
+            type="submit"
+            class="btn btn-info"
+            [disabled]="bookingBookingIdControl.invalid">
+            Booking ID
+        </button>
+    </form> -->
+
         <form style='margin:0 8px 0 8px' class="form-inline searchCust" #bookingByCustIdForm="ngForm" 
                                                 (ngSubmit)="searchByCustIdForm(searchByCustId)">
             <h6 class="text-danger">{{searchByCustIdErrorMessage}} </h6>
@@ -46,7 +64,7 @@
         </form>
 
         <div class=" bookingName ">
-            <h3 >My Booking</h3>
+            <h3 >My Bookings</h3>
         </div>
     <div class= " content container mt-5" >
     <table class="table table-wrapper table-bordered table-hover">
@@ -58,31 +76,22 @@
                     <th>Description</th>
                     <th>Total Cost</th>
                     <th>Distance</th>
-                    <th>Status</th>
                     <th>Customer</th>
                     <th>Vehicle</th>
                     <th></th>
                     <th>Edit</th>
-                    <th></th>
                 </tr>
                 </thead>   
         
         <tbody>
-            <tr *ngFor = "let payment of payments"
+            <tr *ngFor = "let booking of bookings"
                 app-booking-show 
-                [booking] = "payment.booking"
-                [payment] = "payment"
+                [booking] = "booking"
                 (update)="updateBookingParent($event)"
-                (delete)="deleteBookingParent($event)"
-                >
+                (delete)="deleteBookingParent($event)">
             </tr>
         </tbody>
+    
         </table>
     </div>    
 </html>
-
-<!--
-    2 doubts 
-    1. display payment below
-    2. User and admin
--->

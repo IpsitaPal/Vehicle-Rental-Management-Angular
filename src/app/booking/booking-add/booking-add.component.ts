@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Booking } from 'src/app/booking';
-import { ComponentService } from 'src/app/component.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
 import { Vehicle } from 'src/app/vehicle';
+import { BookingService } from '../booking.service';
 
 @Component({
   selector: 'app-booking-add',
@@ -13,6 +13,8 @@ import { Vehicle } from 'src/app/vehicle';
 })
 export class BookingAddComponent implements OnInit {
   //bookingForm:any;
+  isCustomer: boolean = true;
+
   vehicleErrorMessage: any;
   formValidErrorMessage:any;
   driverNew: Driver = {driverId: 0, firstName: '', lastName: '', contactNumber: '',
@@ -24,7 +26,7 @@ export class BookingAddComponent implements OnInit {
   booking: Booking ={bookingId: 0, bookingDate: new Date(Date.now()), bookedTillDate: new Date(Date.now()), bookingDescription: " ", 
     totalCost: 0,distance: 0, customer: this.customerNew, vehicle: this.vehicleNew}
    // booking: any='';
-  constructor(private bookingService: ComponentService, private router: Router ) { }
+  constructor(private bookingService: BookingService, private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +37,12 @@ export class BookingAddComponent implements OnInit {
     console.log(bookingForm)
     this.bookingService.addBooking(this.booking).subscribe((response: any)=>{
       console.log(response);
-      this.router.navigate(['/payment/add']);
+      if(this.isCustomer){
+      this.router.navigate(['/booking']);
+      }
+      else{
+        this.router.navigate(['/bookingby/101']);
+      }
     },
     (exception: any)=>{
       console.log(JSON.stringify(exception));

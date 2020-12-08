@@ -17,7 +17,7 @@
 </td>
 <td>
     <button class= 'btn btn-primary'
-    (click)='updateBooking(booking)'>
+    (click)='updateBooking(booking.bookingId)'>
     Edit
     </button>
 </td>
@@ -27,6 +27,7 @@
     Payment
     </button>
 </td>
+
     <!--<span *ngIf='displayEdit'>
     <td>
         <input type='text' [(ngModel)]='updatedBooking'/>

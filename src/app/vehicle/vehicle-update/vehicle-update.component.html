@@ -1,7 +1,97 @@
-
- 
-<!--td>
-    <button class ="btn btn-warning"
-    (click)='updateProduct(UpdateVehicle)'>Edit
-   </button>
-</td-->
+<div class="content container-fluid">
+    <h2>Edit Vehicle</h2>
+    <form #vehicleEditForm="ngForm" (ngSubmit)="submitEditForm()">
+     <div class="form-group row">
+        <label for="vehicleId" class="col-sm-2 col-form-label">Vehicle ID:</label>
+        <div class="col-sm-10">
+         
+  
+          <div class="form-group row">
+            <label for="vehicleNumber" class="col-sm-2 col-form-label">vehicleNumber:</label>
+            <div class="col-sm-10">
+             <input type="text" [(ngModel)]="updatedVehicle.vehicleNumber" name="vehicleNumber" #empControl="ngModel" />
+              <br />
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <label for="type" class="col-sm-2 col-form-label">Type:</label>
+            <div class="col-sm-10">
+              <input type="text" [(ngModel)]="updatedVehicle.type" name="vehicleType" #empControl="ngModel" />
+              <br />
+            </div>
+          </div>
+  
+  
+  
+  
+          <div class="form-group row">
+            <label for="vehiclecategory" class="col-sm-2 col-form-label">category:</label>
+            <div class="col-sm-10">
+              <input type="text" [(ngModel)]="updatedVehicle.category" name="vehicleCategory" #empControl="ngModel" />
+              <br />
+  
+  
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <label for="vehicledescription" class="col-sm-2 col-form-label">description:</label>
+            <div class="col-sm-10">
+              <input type="text" [(ngModel)]="updatedVehicle.description" name="vehicleDescription"
+                #empControl="ngModel" />
+              <br />
+            </div>
+          </div>
+  
+  
+          <div class="form-group row">
+            <label for="vehiclelocation" class="col-sm-2 col-form-label">Location:</label>
+            <div class="col-sm-10">
+              <input type="text" [(ngModel)]="updatedVehicle.location" name="vehicleLocation" #empControl="ngModel" />
+              <br />
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <label for="vehiclecapacity" class="col-sm-2 col-form-label">capacity:</label>
+            <div class="col-sm-10">
+              <input type="text" [(ngModel)]="updatedVehicle.capacity" name="vehicleCapacity" #empControl="ngModel" />
+              <br />
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <label for="vehiclechargesPerKM" class="col-sm-2 col-form-label">ChargesPerKM:</label>
+            <div class="col-sm-10">
+              <input type="number" [(ngModel)]="updatedVehicle.chargesPerKM" name="vehicleChargesPerKM"
+                #empControl="ngModel" />
+              <br />
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <label for="vehiclefixedCharges" class="col-sm-2 col-form-label">FixedCharges:</label>
+            <div class="col-sm-10">
+              <input type="number" [(ngModel)]="updatedVehicle.fixedCharges" name="vehicleFixedCharges"
+                #empControl="ngModel" />
+              <br />
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <label for="driverId" class="col-sm-2 col-form-label">driver:</label>
+            <div class="col-sm-10">
+              <input type="number" [(ngModel)]="updatedVehicle.driver.driverId" name="driverId" #empControl="ngModel" />
+              <br />
+            </div>
+          </div>
+  
+          <div style='margin:0 4px 0 4px' class="form-group row">
+            <input type="submit" class="btn btn-info" value="Update">
+          </div>
+  
+        </div>
+      </div>
+    </form>
+  </div>

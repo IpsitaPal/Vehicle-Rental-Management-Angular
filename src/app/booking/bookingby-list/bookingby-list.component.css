@@ -1,0 +1,41 @@
+.searchCust{
+    position: absolute;
+    right: 160px;
+    top: 130px;
+  }
+
+  .right{
+    position: absolute;
+    right: 160px;
+    top: 70px;
+  }
+  .left{
+   position: absolute;
+   left: 160px;
+   top: 70px;
+  }
+  .content {
+    overflow: auto;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    bottom: 120px;
+  }
+  
+  .table-wrapper{
+   overflow-y: scroll;
+   height: 150px;
+ }
+ 
+ .table-wrapper th{
+     position: sticky;
+     top: 0;
+     height: 62px;
+ }
+ 
+ .bookingName{
+   position: absolute;
+   left: 160px;
+   top: 135px;
+ }

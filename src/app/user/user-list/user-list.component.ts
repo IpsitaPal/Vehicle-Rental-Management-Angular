@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ComponentService } from 'src/app/component.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -10,10 +10,10 @@ import { ComponentService } from 'src/app/component.service';
 export class UserListComponent implements OnInit {
 
   userArray!:any[];
-  constructor(private UserService:ComponentService,private router:Router) { }
+  constructor(private userService:UserService,private router:Router) { }
 
   ngOnInit(): void {
-    this.UserService.getAllUsers().subscribe((response: any[])=>{
+    this.userService.getAllUsers().subscribe((response: any[])=>{
            console.log("Hello from emp list" + JSON.stringify(response));
          this.userArray = response;
        });

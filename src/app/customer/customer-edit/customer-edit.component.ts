@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ComponentService } from 'src/app/component.service';
 import { Customer } from 'src/app/customer';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-customer-edit',
@@ -12,7 +12,7 @@ export class CustomerEditComponent implements OnInit {
   customer: Customer = new Customer(0, '', '', '', '', '');
   updatedCustomer: Customer =new Customer(0,'','', '','','');
 
-  constructor(private customerService: ComponentService) { }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit(): void {
   }

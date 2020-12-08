@@ -1,0 +1,38 @@
+<html>
+    <div class=" left row ">
+       
+        <button style='margin: 0 8px 0 8px' class=" btn btn-success" (click)='displayAddForm()'>Add New Booking</button>
+    </div>
+        
+        <div class=" bookingName ">
+            <h3 >My Booking</h3>
+        </div>
+    <div class= " content container mt-5" >
+    <table class="table table-wrapper table-bordered table-hover">
+            <thead class="thead-dark ">
+                <tr>
+                    <th>Id</th>
+                    <th>Booking From</th>
+                    <th>Booked Till</th>
+                    <th>Description</th>
+                    <th>Total Cost</th>
+                    <th>Distance</th>
+                    <th>Vehicle</th>
+                    <th></th>
+                    <th>Edit</th>
+                </tr>
+                </thead>   
+        
+        <tbody>
+            <tr *ngFor = "let booking of bookings"
+                app-bookingby-show 
+                [booking] = "booking"
+                (update)="updateBookingParent($event)"
+                (delete)="deleteBookingParent($event)">
+            </tr>
+        </tbody>
+    
+        </table>
+    </div>    
+    <app-title></app-title>
+</html>

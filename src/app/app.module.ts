@@ -30,6 +30,8 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './user/home/home.component';
 import { AdminComponent } from './user/admin/admin.component';
+import { BookingbyListComponent } from './booking/bookingby-list/bookingby-list.component';
+import { BookingbyShowComponent } from './booking/bookingby-list/bookingby-show/bookingby-show.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { AdminComponent } from './user/admin/admin.component';
     BookingShowComponent,
     BookingAddComponent,
     BookingEditComponent,
+    BookingbyListComponent,
+    BookingbyShowComponent,
     VehicleListComponent,
     VehicleShowComponent,
     VehicleAddComponent,

@@ -1,4 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Driver } from 'src/app/driver';
+import { Vehicle } from 'src/app/vehicle';
+import { VehicleService } from '../vehicle.service';
 
 @Component({
   selector: 'app-vehicle-update',
@@ -7,13 +11,25 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class VehicleUpdateComponent implements OnInit {
 
-  constructor() { }
+  newDriver: Driver = {driverId: 0, firstName: '', lastName: '', contactNumber: '',
+  email: '', address: '', chargesPerDay: 0, licenseNo: ''}
+  
+  originalVehicle: any = {vehicleId: 0, vehicleNumber: " ", type: '', category: '', description: '',
+    location: '', capacity: '', chargesPerKM: 0, fixedCharges: 0, driver: this.newDriver }
 
-  @Output() update = new EventEmitter();
-  UpdateVehicle: any;
+    updatedVehicle: any= {vehicleId: 0, vehicleNumber: " ", type: '', category: '', description: '',
+    location: '', capacity: '', chargesPerKM: 0, fixedCharges: 0, driver: this.newDriver }
+
+  
+  constructor(private vehicleService: VehicleService, private router: Router, private activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
+   // throw new Error('Method not implemented.');
   }
-  updateVehicle(UpdateVehicle: string){
-     this.update.emit(UpdateVehicle);
-}
+  
+  submitEditForm(){
+    console.log(JSON.stringify(this.updatedVehicle));
+    this.vehicleService.updateVehicle(this.updatedVehicle).subscribe((response: any)=>{
+      this.router.navigate(['/vehicle']);
+    });
+  }
 }

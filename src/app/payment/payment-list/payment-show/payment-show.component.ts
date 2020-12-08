@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Payment } from '../../payment';
+import { Payment } from 'src/app/payment';
 
 @Component({
   selector: '[payment-show]',

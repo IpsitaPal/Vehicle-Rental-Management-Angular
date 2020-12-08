@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ComponentService } from 'src/app/component.service';
+import { UserService } from '../user.service';
+
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   role:any;
   user1:any;
   
-  constructor(private userService:ComponentService, private router:Router) {
+  constructor(private userService:UserService, private router:Router) {
   
    }
 

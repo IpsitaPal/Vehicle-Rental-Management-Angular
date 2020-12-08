@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Booking } from 'src/app/booking';
-import { ComponentService } from 'src/app/component.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
 import { Payment } from 'src/app/payment';
 import { Vehicle } from 'src/app/vehicle';
-
+import { PaymentService } from '../payment.service';
 
 @Component({
   selector: 'app-payment-list',
@@ -26,10 +25,10 @@ export class PaymentListComponent implements OnInit {
   id: number = 0;
   idType!: String;
 
-  constructor(private service: ComponentService, private router: Router) { }
+  constructor(private paymentService: PaymentService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getAllPayments().subscribe(
+    this.paymentService.getAllPayments().subscribe(
         (response: any[])=> {    this.allPayments = response;   },
         (exception: any) => {    this.errorMessage = exception.error.message;          }
     );
@@ -40,7 +39,7 @@ export class PaymentListComponent implements OnInit {
     console.log(this.id + " " + this.idType);
     if(this.idType == "customer")
     {
-      this.service.getAllPaymentsByCustomer(this.id).subscribe(
+      this.paymentService.getAllPaymentsByCustomer(this.id).subscribe(
         (response: any[])=> {     this.allPayments = response;    },
         (exception: any) => {    this.errorMessage = exception.error.message;          }
       );
@@ -48,7 +47,7 @@ export class PaymentListComponent implements OnInit {
     else if (this.idType == "booking") 
     {
       this.allPayments = [];
-      this.service.getAllPaymentsByBooking(this.id)
+      this.paymentService.getAllPaymentsByBooking(this.id)
         .subscribe(               (response: Payment) => 
                                       { 
                                         this.payment = response 
@@ -67,7 +66,7 @@ export class PaymentListComponent implements OnInit {
 
   deletePaymentParent(id: number) {
     console.log("Delete from list" + id);
-    this.service.deletePayment(id).subscribe((response: any) => {
+    this.paymentService.deletePayment(id).subscribe((response: any) => {
       this.allPayments = response;
     });
   }

@@ -1,8 +1,8 @@
 .content {
-    overflow: auto;
-    position: absolute;
-    top: 100px;
-    left: 0;
-    right: 0;
-    bottom: 120px;
-  }
+  overflow: auto;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 120px;
+}

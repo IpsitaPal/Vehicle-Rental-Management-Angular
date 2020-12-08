@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ComponentService } from 'src/app/component.service';
 
 import { User } from '../../user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-add',
@@ -17,7 +17,7 @@ export class UserAddComponent implements OnInit {
   newUser:any;
   user:User;
  
-  constructor(private userService:ComponentService,private router:Router) {
+  constructor(private userService:UserService,private router:Router) {
     this.user=new User('','','');
    }
 
