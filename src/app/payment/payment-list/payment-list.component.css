@@ -4,7 +4,11 @@ h1 {
     padding-left: 20px;
 }
 
-table {
+input {
+    width: 80px;
+}
+
+/*table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -23,5 +27,5 @@ th {
 th.noBorder {
     border: 0;
   }
-
+*/
 

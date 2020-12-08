@@ -32,8 +32,8 @@ import { HomeComponent } from './user/home/home.component';
 import { AdminComponent } from './user/admin/admin.component';
 import { BookingbyListComponent } from './booking/bookingby-list/bookingby-list.component';
 import { BookingbyShowComponent } from './booking/bookingby-list/bookingby-show/bookingby-show.component';
-import { AdminTitleComponent } from './admin-title/admin-title.component';
 import { LogoutComponent } from './user/logout/logout.component';
+import { ProfileComponent } from './customer/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -66,8 +66,8 @@ import { LogoutComponent } from './user/logout/logout.component';
     UserListComponent,
     HomeComponent,
     AdminComponent,
-    AdminTitleComponent,
-    LogoutComponent
+    LogoutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

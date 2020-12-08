@@ -9,11 +9,20 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient) { }
   
-  getCustomer(customerId: number): any{
-    return this.httpClient.get("http://localhost:8080/ovms/booking/" + customerId);
+  getCustomerById(customerId: number): any{
+    return this.httpClient.get("http://localhost:8080/ovms/customer/" + customerId);
   }
-  getAllCustomers(firstName: string): any{
-    return this.httpClient.get("http://localhost:8080/ovms/viewcustomer/" +firstName)
+  getAllCustomersByName(firstName: string): any{
+    return this.httpClient.get("http://localhost:8080/ovms/viewcustomer/" + firstName)
+  }
+
+  getAllCustomersByEmail(email: string): any{
+    console.log("Hello" + JSON.stringify(email));
+    return this.httpClient.get("http://localhost:8080/ovms/getcustomer/" + email)
+  }
+
+  getAllCustomers(): any{
+    return this.httpClient.get("http://localhost:8080/ovms/customer/");
   }
   
   deleteCustomer(customerId :number): any{
@@ -25,7 +34,7 @@ export class CustomerService {
   }
 
   updateCustomer(customer: Customer): any{
-    return this.httpClient.put("http://localhost:8080/ovms/booking/", customer);
+    return this.httpClient.put("http://localhost:8080/ovms/customer/", customer);
   }
 
 }

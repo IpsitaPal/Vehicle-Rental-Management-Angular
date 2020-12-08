@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../common.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-title',
@@ -8,7 +9,8 @@ import { CommonService } from '../common.service';
 })
 export class TitleComponent implements OnInit {
 
-
+  currentUser: User = new User('', '', '');
+  
   constructor(private service:CommonService) { }
 
   ngOnInit(): void {
@@ -16,6 +18,10 @@ export class TitleComponent implements OnInit {
 
   getUser(): String {
     return this.service.getRole();
+  }
+
+  logout() {
+    this.service.setCurrentUser(this.currentUser);
   }
 
 }

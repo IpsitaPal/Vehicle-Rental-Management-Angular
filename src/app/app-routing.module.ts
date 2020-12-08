@@ -16,6 +16,9 @@ import { VehicleAddComponent } from './vehicle/vehicle-add/vehicle-add.component
 import { VehicleUpdateComponent } from './vehicle/vehicle-update/vehicle-update.component';
 import { BookingbyListComponent } from './booking/bookingby-list/bookingby-list.component';
 import { LogoutComponent } from './user/logout/logout.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
+import { ProfileComponent } from './customer/profile/profile.component';
 
 const routes: Routes = [
   {path: 'vehicle', component: VehicleListComponent},
@@ -30,7 +33,10 @@ const routes: Routes = [
   {path: 'booking/edit/:bookingId', component:BookingEditComponent},
   {path: 'bookingby/:customerId', component:BookingbyListComponent},
   
+  {path: 'customer', component: CustomerListComponent},
   {path: 'customer/add', component: CustomerAddComponent},
+  {path: 'customer/edit', component: CustomerEditComponent },
+  {path: 'profile', component: ProfileComponent },
   
   {path: 'user', component: UserListComponent },
   {path: 'user/add', component: UserAddComponent },

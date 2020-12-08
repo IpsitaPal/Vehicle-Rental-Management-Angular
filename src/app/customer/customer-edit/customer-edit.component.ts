@@ -18,7 +18,7 @@ export class CustomerEditComponent implements OnInit {
   }
 
   submitEditForm(){
-    this.customerService.updateCustomer(this.updatedCustomer).subscribe((response: any)=>{ });
+    this.customerService.updateCustomer(this.updatedCustomer).subscribe((response: any) => { });
   }
 
 }

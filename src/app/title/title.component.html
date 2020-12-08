@@ -11,9 +11,9 @@
 	  </div>
 		
 		<ul class="nav navbar-nav navbar-right">
-      <li class="nav-item">
+      <!--li class="nav-item">
         <a>{{getUser()}}</a>
-      </li>
+      </li-->
 			<li class="nav-item">
         <a [routerLink]="['/home']">Home</a>
       </li>
@@ -32,6 +32,9 @@
       <li *ngIf= "getUser() == 'admin'" class="nav-item">
         <a [routerLink]="['/payment']">Payments</a>
       </li>
+      <li *ngIf= "getUser() != ''" class="nav-item">
+        <a [routerLink]="['/profile']">Profile</a>
+      </li>
 			<li *ngIf= "getUser() != ''" class="nav-item">
         <a [routerLink]="['/logout']">Sign out</a>
       </li>
@@ -43,23 +46,23 @@
 	</div>
 </nav>
 
-<div class="footer">
+<!--div class="footer">
   <div class="bg-dark text-white mt-4">
     <div class="container-fluid py-3">
       
-      <!--div class="row">
+      <div class="row">
         <div class="col-md-3">
           <h5>About Us</h5>
         </div>
       </div-->
       
-      <div class="row">
-        <div class="col-md-6"><a>About Us</a><!--This is a vehicle rental portal <span class="small"><br>Happy Travelling.</span--></div>
+      <!--div class="row">
+        <div class="col-md-6"><a>About Us</a>This is a vehicle rental portal <span class="small"><br>Happy Travelling.</span></div>
         <div class="col-md-3"></div>
         <div class="col-md-3 text-right small align-self-end">©2020 Vehicle Rental Management </div>
       </div>
     
     </div>
   </div>
-</div>
+</div-->
       

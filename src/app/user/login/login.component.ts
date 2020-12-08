@@ -29,13 +29,11 @@ export class LoginComponent implements OnInit {
     this.user =new User(this.userid, this.password, "anonymous");
     console.log(JSON.stringify(this.user));
     this.userService.checkLogin(this.user)
-    .subscribe(  data=>{
+      .subscribe(  data=>{
             console.log(JSON.stringify(data));
             if (data != null) {
-
                     //this.user={userId:this.userid,password:this.password,role:'admin'};
                     this.service.setCurrentUser(data);
-                    
                     this.router.navigate(["/home"]);
                   }
               });

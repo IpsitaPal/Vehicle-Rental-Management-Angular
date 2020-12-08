@@ -1,1 +1,51 @@
-<p>customer-list works!</p>
+<app-title></app-title>
+    <!--div class=" left row ">
+        <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAll()'>View All </button>
+    </div>
+    
+   
+    <form style='margin:0 8px 0 8px' class="form-inline searchCust" #bookingByCustIdForm="ngForm" 
+                                                (ngSubmit)="searchByCustIdForm(searchByCustId)">
+        <h6 class="text-danger">{{searchByCustIdErrorMessage}} </h6>
+            <input
+            type="number"
+            [(ngModel)]="searchByCustId"
+            name="searchByCustId"
+            #bookingCustIdControl="ngModel"
+            placeholder="Customer ID"
+            required/>
+    
+            <button style='margin:0 8px 0 8px'
+                type="submit"
+                class="btn btn-info"
+                [disabled]="bookingCustIdControl.invalid">
+                Customer ID
+            </button>
+            
+        </form-->
+
+        <div class=" bookingName ">
+            <h3 >Customer Details</h3>
+        </div>
+    <div class= " content container mt-5" >
+    <table class="table table-wrapper table-bordered table-hover">
+            <thead class="thead-dark ">
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Name</th>
+                    <th>Mobile Number</th>
+                    <th>Email ID</th>
+                    <th>Address</th>
+                </tr>
+                </thead>   
+        
+        <tbody>
+            <tr *ngFor = "let customer of customers"
+                app-customer-show 
+                [customer] = "customer">
+                <!--(delete)="deleteCustomerParent($event)"-->
+            </tr>
+        </tbody>
+    
+        </table>
+    </div>    
