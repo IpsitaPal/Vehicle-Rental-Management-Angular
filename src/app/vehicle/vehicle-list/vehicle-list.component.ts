@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { VehicleService } from '../vehicle.service';
+import { ComponentService } from 'src/app/component.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -9,7 +9,7 @@ import { VehicleService } from '../vehicle.service';
 })
 export class VehicleListComponent implements OnInit {
 vehicles: any;
-  constructor(private vehicleService: VehicleService, private router: Router) { }
+  constructor(private vehicleService: ComponentService, private router: Router) { }
  
 
   ngOnInit(): void {

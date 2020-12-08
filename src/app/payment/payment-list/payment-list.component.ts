@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Booking } from 'src/app/booking/booking';
+import { Booking } from 'src/app/booking';
+import { ComponentService } from 'src/app/component.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
+import { Payment } from 'src/app/payment';
 import { Vehicle } from 'src/app/vehicle';
-import { Payment } from '../payment';
-import { PaymentService } from '../payment.service';
+
 
 @Component({
   selector: 'app-payment-list',
@@ -25,21 +26,21 @@ export class PaymentListComponent implements OnInit {
   id: number = 0;
   idType!: String;
 
-  constructor(private paymentService: PaymentService, private router: Router) { }
+  constructor(private service: ComponentService, private router: Router) { }
 
   ngOnInit(): void {
-    this.paymentService.getAllPayments().subscribe(
+    this.service.getAllPayments().subscribe(
         (response: any[])=> {    this.allPayments = response;   },
         (exception: any) => {    this.errorMessage = exception.error.message;          }
     );
   }
 
-  findBy(dropValue : any) {
-    this.idType = dropValue.target.value;      
+  findBy() {
+    //this.idType = dropValue.target.value;      
     console.log(this.id + " " + this.idType);
     if(this.idType == "customer")
     {
-      this.paymentService.getAllPaymentsByCustomer(this.id).subscribe(
+      this.service.getAllPaymentsByCustomer(this.id).subscribe(
         (response: any[])=> {     this.allPayments = response;    },
         (exception: any) => {    this.errorMessage = exception.error.message;          }
       );
@@ -47,11 +48,11 @@ export class PaymentListComponent implements OnInit {
     else if (this.idType == "booking") 
     {
       this.allPayments = [];
-      this.paymentService.getAllPaymentsByBooking(this.id)
+      this.service.getAllPaymentsByBooking(this.id)
         .subscribe(               (response: Payment) => 
                                       { 
-                                        console.log(response)
                                         this.payment = response 
+                                        this.allPayments.push(this.payment);
                                       },
                                   (exception: any) => 
                                       { 
@@ -59,16 +60,14 @@ export class PaymentListComponent implements OnInit {
                                         console.log("Hi" + JSON.stringify(this.errorMessage))
                                       }
       );
-      console.log("Check 1: " + JSON.stringify(this.payment))
-      this.allPayments.push(this.payment);
     } 
-    this.idType = ""; 
+    //this.idType = ""; 
     this.errorMessage = "";
   }
 
   deletePaymentParent(id: number) {
     console.log("Delete from list" + id);
-    this.paymentService.deletePayment(id).subscribe((response: any) => {
+    this.service.deletePayment(id).subscribe((response: any) => {
       this.allPayments = response;
     });
   }

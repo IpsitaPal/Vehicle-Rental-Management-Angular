@@ -58,22 +58,31 @@
                     <th>Description</th>
                     <th>Total Cost</th>
                     <th>Distance</th>
+                    <th>Status</th>
                     <th>Customer</th>
                     <th>Vehicle</th>
                     <th></th>
                     <th>Edit</th>
+                    <th></th>
                 </tr>
                 </thead>   
         
         <tbody>
-            <tr *ngFor = "let booking of bookings"
+            <tr *ngFor = "let payment of payments"
                 app-booking-show 
-                [booking] = "booking"
+                [booking] = "payment.booking"
+                [payment] = "payment"
                 (update)="updateBookingParent($event)"
-                (delete)="deleteBookingParent($event)">
+                (delete)="deleteBookingParent($event)"
+                >
             </tr>
         </tbody>
-    
         </table>
     </div>    
 </html>
+
+<!--
+    2 doubts 
+    1. display payment below
+    2. User and admin
+-->

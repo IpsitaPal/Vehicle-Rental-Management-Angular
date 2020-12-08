@@ -1,0 +1,19 @@
+<p>user-add works!</p>
+<form  (ngSubmit)="submitAddForm()" #prodForm="ngForm">
+    User Id:
+    <input 
+    type="text"
+     [(ngModel)]="user"
+      name="newUser"
+    #prodControl="ngModel" 
+    required/>
+    <span 
+    class="text-danger"
+     *ngIf="prodControl.invalid && prodControl.touched">
+      Product Name is required
+    </span>
+    <button 
+    type="submit" 
+    class="btn btn-info" >
+    Add</button>
+  </form>

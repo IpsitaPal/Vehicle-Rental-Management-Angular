@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Booking } from 'src/app/booking';
+import { ComponentService } from 'src/app/component.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
 import { Vehicle } from 'src/app/vehicle';
-import { Booking } from '../booking';
-import { BookingService } from '../booking.service';
 
 @Component({
   selector: 'app-booking-add',
@@ -24,7 +24,7 @@ export class BookingAddComponent implements OnInit {
   booking: Booking ={bookingId: 0, bookingDate: new Date(Date.now()), bookedTillDate: new Date(Date.now()), bookingDescription: " ", 
     totalCost: 0,distance: 0, customer: this.customerNew, vehicle: this.vehicleNew}
    // booking: any='';
-  constructor(private bookingService: BookingService, private router: Router ) { }
+  constructor(private bookingService: ComponentService, private router: Router ) { }
 
   ngOnInit(): void {
   }

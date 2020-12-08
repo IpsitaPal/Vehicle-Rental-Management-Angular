@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Booking } from 'src/app/booking';
+import { ComponentService } from 'src/app/component.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
 import { Vehicle } from 'src/app/vehicle';
-import { Booking } from '../booking';
-import { BookingService } from '../booking.service';
 
 @Component({
   selector: 'app-booking-edit',
@@ -26,7 +26,7 @@ export class BookingEditComponent implements OnInit {
   
 
 
-  constructor(private bookingService: BookingService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private bookingService: ComponentService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     

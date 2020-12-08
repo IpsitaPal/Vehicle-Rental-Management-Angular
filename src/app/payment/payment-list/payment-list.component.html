@@ -4,12 +4,21 @@
 		<div class="col-8"></div>
 		<div class="col-4" style="align-items: right;">
 			<form>
-				<input type="text" placeholder="Enter ID" [(ngModel)]=id name="id">
-				<select (change)="findBy($event)">
+				
+				<select 
+					(change)="findBy()" 
+					[(ngModel)]="idType" 
+					name="idType">
 			  		<option value="">Select</option>
 			  		<option value="customer">Customer ID</option>
 			  		<option value="booking">Booking ID</option>
 				</select>
+				<input type="text" 
+						placeholder="Enter ID" 
+						[(ngModel)]=id 
+						name="id" 
+						(keyup)="findBy()">
+
 			</form>
 		</div>
 	</div>

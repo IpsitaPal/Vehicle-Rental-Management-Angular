@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Booking } from '../../booking';
 
 @Component({
   selector: '[app-booking-show]',
@@ -9,8 +8,10 @@ import { Booking } from '../../booking';
 export class BookingShowComponent implements OnInit {
 
   @Input() booking: any;
+  @Input() payment: any;
   @Output() delete: any = new EventEmitter();
   @Output() update: any = new EventEmitter();
+  @Output() show: any = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -22,6 +23,10 @@ export class BookingShowComponent implements OnInit {
 
   deleteBooking(booking: any){
     this.delete.emit(booking);
+  }
+
+  showPayment(booking: any) {
+    this.show.emit(booking);
   }
 
 }

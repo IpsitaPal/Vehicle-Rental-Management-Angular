@@ -4,11 +4,14 @@
 <td>{{booking.bookingDescription}}</td>
 <td>{{booking.totalCost}}</td>
 <td>{{booking.distance}}</td>
+<td>{{payment.paymentStatus}}</td>
 <td>{{booking.customer.customerId}}</td>
 <td>{{booking.vehicle.vehicleId}}</td>
 <td>
     
-       <i class="material-icons" style="display: inline-block; cursor: pointer;" (click)='deleteBooking(booking.bookingId)'>
+       <i class="material-icons" 
+          style="display: inline-block; cursor: pointer;" 
+          (click)='deleteBooking(booking.bookingId)'>
            delete</i>
     
 </td>
@@ -16,6 +19,12 @@
     <button class= 'btn btn-primary'
     (click)='updateBooking(booking)'>
     Edit
+    </button>
+</td>
+<td>
+    <button class= 'btn btn-info'
+    (click)='showPayment(booking)'>
+    Payment
     </button>
 </td>
     <!--<span *ngIf='displayEdit'>

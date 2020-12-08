@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Booking } from '../booking';
-import { BookingService } from '../booking.service';
+import { Booking } from 'src/app/booking';
+import { ComponentService } from 'src/app/component.service';
+import { Payment } from 'src/app/payment';
 
 @Component({
   selector: 'app-booking-list',
@@ -11,17 +12,24 @@ import { BookingService } from '../booking.service';
 export class BookingListComponent implements OnInit {
 
   bookings: Booking[] = [];
+  payments: Payment[] = [];
+  payment!: Payment;
   searchByDate: any;
   searchByCustId:any;
   searchByDateErrorMessage: any;
   deleteErrorMessage:any;
   searchByCustIdErrorMessage: any;
+  paymentErrorMessage: String = '';
   //searchByCustIdErrorMessage: any;
-  constructor(private bookingService: BookingService, private router: Router) { }
+  
+  constructor(private service: ComponentService, private router: Router) { }
 
   ngOnInit(): void {
-    
-    this.bookingService.getAllBookings().subscribe((response: any)=>{
+    this.service.getAllPayments().subscribe(
+      (response: any[])=> {    this.payments = response;   },
+      (exception: any) => {    this.paymentErrorMessage = exception.error.message;          }
+  );
+    this.service.getAllBookings().subscribe((response: any)=>{
       console.log("Get all"+ response);
       this.bookings=response;
     })
@@ -40,7 +48,7 @@ export class BookingListComponent implements OnInit {
     this.deleteErrorMessage="";
     this.searchByDateErrorMessage="";
     this.searchByCustIdErrorMessage="";
-    this.bookingService.deleteBooking(bookingId).subscribe((response: any)=>{
+    this.service.deleteBooking(bookingId).subscribe((response: any)=>{
       this.bookings = response;
     },
     (exception: any)=>{
@@ -54,7 +62,7 @@ export class BookingListComponent implements OnInit {
     this.deleteErrorMessage="";
     this.searchByDateErrorMessage="";
     this.searchByCustIdErrorMessage=""; 
-    this.bookingService.getBookingsByBoookingDate(searchByDate).subscribe((response: any)=>{
+    this.service.getBookingsByBoookingDate(searchByDate).subscribe((response: any)=>{
       this.bookings = response;
     },
     (exception: any)=>{
@@ -70,7 +78,7 @@ export class BookingListComponent implements OnInit {
     this.deleteErrorMessage="";
     this.searchByDateErrorMessage="";
     this.searchByCustIdErrorMessage="";
-    this.bookingService.getAllBookings().subscribe((response: any)=>{
+    this.service.getAllBookings().subscribe((response: any)=>{
       console.log("Get all"+ response);
       this.bookings=response;
     })
@@ -81,13 +89,19 @@ export class BookingListComponent implements OnInit {
     this.deleteErrorMessage="";
     this.searchByDateErrorMessage=""; 
     this.searchByCustIdErrorMessage="";
-    this.bookingService.getBookingsByCustomer(searchByCustId).subscribe((response: any)=>{
+    this.service.getBookingsByCustomer(searchByCustId).subscribe((response: any)=>{
       this.bookings = response;
     },
     (exception: any)=>{
       console.log(JSON.stringify(exception));
       this.searchByCustIdErrorMessage = exception.error.message;
     });
+  }
+
+  showPaymentParent(booking: any) {
+    this.service.getAllPaymentsByBooking(booking.bookingId)
+        .subscribe((response: Payment) => { this.payment = response }
+      );
   }
 
 }

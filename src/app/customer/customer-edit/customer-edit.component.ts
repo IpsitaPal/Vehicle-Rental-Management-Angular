@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ComponentService } from 'src/app/component.service';
+import { Customer } from 'src/app/customer';
 
 @Component({
   selector: 'app-customer-edit',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerEditComponent implements OnInit {
 
-  constructor() { }
+  customer: Customer = new Customer(0, '', '', '', '', '');
+  updatedCustomer: Customer =new Customer(0,'','', '','','');
+
+  constructor(private customerService: ComponentService) { }
 
   ngOnInit(): void {
+  }
+
+  submitEditForm(){
+    this.customerService.updateCustomer(this.updatedCustomer).subscribe((response: any)=>{ });
   }
 
 }

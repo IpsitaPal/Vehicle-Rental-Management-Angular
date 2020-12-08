@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Booking } from 'src/app/booking/booking';
+import { Booking } from 'src/app/booking';
+import { ComponentService } from 'src/app/component.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
+import { Payment } from 'src/app/payment';
 import { Vehicle } from 'src/app/vehicle';
-import { Payment } from '../payment';
-import { PaymentService } from '../payment.service';
+
 
 @Component({
   selector: 'payment-add',
@@ -22,7 +23,7 @@ export class PaymentAddComponent implements OnInit {
         "Scheduled", 1200, 12, this.customer, this.vehicle);
   cardDetail: String = "";
   
-  constructor(private paymentService: PaymentService, private router: Router) { 
+  constructor(private paymentService: ComponentService, private router: Router) { 
       this.payment = new Payment(0, "Credit", new Date(), this.booking, "Paid");
   }
 

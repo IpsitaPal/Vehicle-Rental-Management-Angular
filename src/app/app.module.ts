@@ -24,6 +24,12 @@ import { CustomerAddComponent } from './customer/customer-add/customer-add.compo
 import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CustomerShowComponent } from './customer/customer-list/customer-show/customer-show.component';
+import { UserComponent } from './user/user.component';
+import { UserAddComponent } from './user/user-add/user-add.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { LoginComponent } from './user/login/login.component';
+import { HomeComponent } from './user/home/home.component';
+import { AdminComponent } from './user/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,14 @@ import { CustomerShowComponent } from './customer/customer-list/customer-show/cu
     CustomerAddComponent,
     CustomerEditComponent,
     CustomerListComponent,
-    CustomerShowComponent
+    CustomerShowComponent,
+    UserComponent,
+    UserAddComponent,
+    UserListComponent,
+    LoginComponent,
+    UserListComponent,
+    HomeComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
