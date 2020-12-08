@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-title',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitleComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private service:CommonService) { }
 
   ngOnInit(): void {
+  }
+
+  getUser(): String {
+    return this.service.getRole();
   }
 
 }

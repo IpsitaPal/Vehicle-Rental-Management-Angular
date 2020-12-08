@@ -31,7 +31,7 @@ deleteErrorMessage:any;
 
   updateVehicleParent(vehicle: any)
   {
-    this.router.navigate(['/vehicle-edit'], {queryParams: vehicle})
+    this.router.navigate(['/vehicle/edit'], {queryParams: vehicle})
   
   }
   deleteVehicleParent(vehicleId: any){

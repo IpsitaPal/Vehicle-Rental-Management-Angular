@@ -19,18 +19,14 @@ export class UserService {
   }
 
   addUser(newUser:User):any{
-    this.userArray[this.userArray.length]=newUser;
+    //this.userArray[this.userArray.length]=newUser;
     
     console.log("Hello from service" + JSON.stringify(newUser));
     return this.httpClient.post("http://localhost:8080/adduser", newUser);
 
   }
   
-  checkLogin(email1:string,password1:string,role1:string):Observable<User>{
-    console.log(email1)
-    console.log(password1)
-    console.log(role1);
-     return this.httpClient.post<User>("http://localhost:8080/login", 
-              {userId:email1,password:password1,role:role1});
+  checkLogin(user: User):Observable<User>{
+     return this.httpClient.post<User>("http://localhost:8080/login", user);
   }
 }

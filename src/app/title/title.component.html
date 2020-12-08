@@ -11,29 +11,37 @@
 	  </div>
 		
 		<ul class="nav navbar-nav navbar-right">
-			<li class="nav-item">
-        <a [routerLink]="">Home</a>
-      </li>
       <li class="nav-item">
+        <a>{{getUser()}}</a>
+      </li>
+			<li class="nav-item">
+        <a [routerLink]="['/home']">Home</a>
+      </li>
+      <li *ngIf= "getUser() == 'admin'" class="nav-item">
         <a [routerLink]="['/customer']">Customers</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf= "getUser() == 'admin'" class="nav-item">
         <a [routerLink]="['/vehicle']">Vehicles</a>
       </li>
-			<li class="nav-item">
+			<li *ngIf= "getUser() == 'admin'" class="nav-item">
         <a [routerLink]="['/booking']">Bookings</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf= "getUser() == 'customer'" class="nav-item">
+        <a [routerLink]="['/booking']">Book a Car</a>
+      </li>
+      <li *ngIf= "getUser() == 'admin'" class="nav-item">
         <a [routerLink]="['/payment']">Payments</a>
       </li>
-			<li class="nav-item">
-        <a [routerLink]="">Sign out</a>
+			<li *ngIf= "getUser() != ''" class="nav-item">
+        <a [routerLink]="['/logout']">Sign out</a>
+      </li>
+      <li *ngIf= "getUser() == ''" class="nav-item">
+        <a [routerLink]="['/login']">Sign in</a>
       </li>
     </ul>	
     	  
 	</div>
 </nav>
-
 
 <div class="footer">
   <div class="bg-dark text-white mt-4">

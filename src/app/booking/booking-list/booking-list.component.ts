@@ -38,16 +38,16 @@ export class BookingListComponent implements OnInit {
   }
 
   displayAddForm(){
-    this.router.navigate(['/booking-add']);
+    this.router.navigate(['/booking/add']);
   }
   
   updateBookingParent(bookingId: any){	
     // this.router.navigate(['/booking-edit'], {queryParams: bookingId })	
-    this.router.navigate(['/booking-edit' ,bookingId ]); 
+    this.router.navigate(['/booking/edit' ,bookingId ]); 
   }
   
-  deleteBookingParent(bookingId: any){
-    this.searchByCustId="";
+  deleteBookingParent(paymentId: any) {
+    /*this.searchByCustId="";
     this.searchByDate="";
     this.deleteErrorMessage="";
     this.searchByDateErrorMessage="";
@@ -58,6 +58,9 @@ export class BookingListComponent implements OnInit {
     (exception: any)=>{
       console.log(JSON.stringify(exception));
       this.deleteErrorMessage = exception.error.message;
+    });*/
+    this.paymentService.deletePayment(paymentId).subscribe((response: any) => {
+      window.location.reload();
     });
   }
 

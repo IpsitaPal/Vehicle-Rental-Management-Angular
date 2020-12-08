@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonService } from 'src/app/common.service';
+import { User } from 'src/app/user';
 import { UserService } from '../user.service';
 
 
@@ -14,24 +16,33 @@ export class LoginComponent implements OnInit {
   userid:any;
   password:any;
   role:any;
-  user1:any;
+  user!: User; 
   
-  constructor(private userService:UserService, private router:Router) {
+  constructor(private userService:UserService, private router:Router, private service: CommonService) {
   
    }
 
   ngOnInit(): void {
   }
-  submitLoginForm(form:any){
-     console.log(this.userid);
-     console.log(this.password);
-     console.log(this.role);
-    this.userService.checkLogin(this.userid,this.password,this.role)
-    .subscribe(
-      data=>{
-      if (data != null) {
-    
-      this.user1=data;console.log(data)
+  
+  submitLoginForm(form:any) {
+    this.user =new User(this.userid, this.password, "anonymous");
+    console.log(JSON.stringify(this.user));
+    this.userService.checkLogin(this.user)
+    .subscribe(  data=>{
+            console.log(JSON.stringify(data));
+            if (data != null) {
+
+                    //this.user={userId:this.userid,password:this.password,role:'admin'};
+                    this.service.setCurrentUser(data);
+                    
+                    this.router.navigate(["/home"]);
+                  }
+              });
+  }
+}
+
+     /*console.log(data)
       if(this.user1.role=="customer"){
         alert(" Customer Logged in");
         this.router.navigate(["/home"]) //customer page
@@ -48,8 +59,5 @@ export class LoginComponent implements OnInit {
       alert("invalid credentials");
     }
 
+*/
 
-
-})
-  }
-}

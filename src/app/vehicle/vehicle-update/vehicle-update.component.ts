@@ -17,7 +17,7 @@ export class VehicleUpdateComponent implements OnInit {
   originalVehicle: any = {vehicleId: 0, vehicleNumber: " ", type: '', category: '', description: '',
     location: '', capacity: '', chargesPerKM: 0, fixedCharges: 0, driver: this.newDriver }
 
-    updatedVehicle: any= {vehicleId: 0, vehicleNumber: " ", type: '', category: '', description: '',
+  updatedVehicle: any= {vehicleId: 0, vehicleNumber: " ", type: '', category: '', description: '',
     location: '', capacity: '', chargesPerKM: 0, fixedCharges: 0, driver: this.newDriver }
 
   

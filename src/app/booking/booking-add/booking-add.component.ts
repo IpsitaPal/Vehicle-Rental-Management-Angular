@@ -34,7 +34,7 @@ export class BookingAddComponent implements OnInit {
   // later route it to payment
   submitAddForm(bookingForm:any){
     this.vehicleErrorMessage ='';
-    console.log(bookingForm)
+    console.log(JSON.stringify(this.booking))
     this.bookingService.addBooking(this.booking).subscribe((response: any)=>{
       console.log(response);
       if(this.isCustomer){

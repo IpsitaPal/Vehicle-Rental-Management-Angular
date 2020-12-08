@@ -67,7 +67,7 @@ export class PaymentListComponent implements OnInit {
   deletePaymentParent(id: number) {
     console.log("Delete from list" + id);
     this.paymentService.deletePayment(id).subscribe((response: any) => {
-      this.allPayments = response;
+      window.location.reload();
     });
   }
 
