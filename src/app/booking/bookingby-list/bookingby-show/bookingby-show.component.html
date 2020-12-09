@@ -4,7 +4,7 @@
 <td>{{booking.bookingDescription}}</td>
 <td>{{booking.totalCost}}</td>
 <td>{{booking.distance}}</td>
-<td>{{booking.vehicle.vehicleId}}</td>
+<td>{{payment.paymentStatus}}</td>
 <td>
     
        <i class="material-icons" style="display: inline-block; cursor: pointer;" (click)='deleteBooking(booking.bookingId)'>
@@ -12,8 +12,21 @@
     
 </td>
 <td>
-    <button class= 'btn btn-primary'
+    <button 
+    [disabled]="isCancelled()"
+    class= 'btn btn-primary'
     (click)='updateBooking(booking.bookingId)'>
     Edit
+    </button>
+</td>
+
+<td>
+    <button 
+        type="button" 
+        class="btn btn-info" 
+        data-toggle="modal" 
+        data-target="#bookingModal" 
+        (click)="showPaymentBy(payment)">
+    Show
     </button>
 </td>

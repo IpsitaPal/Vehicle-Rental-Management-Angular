@@ -1,12 +1,13 @@
 <app-title></app-title>
-<div class="container">
+<div class="full-height container">
   <div class="col-md-4 col-sm-12 mx-auto mt-5">
-    <div class="card">
+    <div class="card" style="background: linear-gradient(to bottom, #e1dfdf 0%, #ffffff 100%);">
       <div class="card-body">
+        <h2><b>Sign In</b></h2><br>
         <form #loginForm="ngForm" (ngSubmit)="submitLoginForm(loginForm)">
           <p class="text-center text-secondary"><i class="fa fa-car fa-3x"></i></p>
           <div class="form-group">
-            <label for="userid">User Id:</label>
+            <label for="userid">User ID:</label>
             <input class="form-control" type="text"[(ngModel)]="userid" name="userid" id="userid" #prodControl="ngModel" autocomplete="off" required/>
             <span class="text-danger" *ngIf="prodControl.invalid && prodControl.touched" >
               User Id is mandatory
@@ -14,13 +15,13 @@
           </div>
           <div class="form-group">
             <label for="password">Password:</label>
-            <input class="form-control" type="password"[(ngModel)]="password" id="password" name="password" #prodControl="ngModel" required/>
-            <span class="text-danger" *ngIf="prodControl.invalid && prodControl.touched" >
+            <input class="form-control" type="password"[(ngModel)]="password" id="password" name="password" #passControl="ngModel" required/>
+            <span class="text-danger" *ngIf="passControl.invalid && passControl.touched" >
               password is mandatory
             </span>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-outline-success w-50" [disabled]="loginForm.invalid">Login</button>
+            <button type="submit" class="btn btn-info w-50" [disabled]="loginForm.invalid">Login</button>
           </div>
         </form>
       </div>

@@ -15,7 +15,9 @@ export class CustomerListComponent implements OnInit {
   deleteErrorMessage:any;
   searchByCustIdErrorMessage: any;
   bookings: any;
- 
+  searchByCustFirstNameErrorMessage: String = '';
+  searchByCustfirstName: string = '';
+
   constructor(private customerService: CustomerService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,34 +27,31 @@ export class CustomerListComponent implements OnInit {
       this.customers=response;
     })
   }
-/*
-  deleteCustomerParent(customerId: any){
-    this.searchByCustId="";
-   
-    this.deleteErrorMessage="";
-    
-    this.searchByCustIdErrorMessage="";
-    this.customerService.deleteCustomer(0).subscribe((response: any)=>{
+
+  searchByCustFirstNameForm(){
+    this.searchByCustFirstNameErrorMessage="";
+    this.customerService.getAllCustomersByName(this.searchByCustfirstName).subscribe((response: any)=>{
       this.customers = response;
     },
     (exception: any)=>{
       console.log(JSON.stringify(exception));
-      this.deleteErrorMessage = exception.error.message;
+      this.searchByCustIdErrorMessage = exception.error.message;
     });
+    this.searchByCustfirstName = '';
   }
 
+
   displayViewAllForm(){
-    
     this.searchByCustId="";
     this.deleteErrorMessage="";
    
     this.searchByCustIdErrorMessage="";
-    this.customerService.getAllCustomers('').subscribe((response: any)=>{
+    this.customerService.getAllCustomers().subscribe((response: any)=>{
       console.log("Get all"+ response);
       this.customers=response;
     })
   }
-
+/*
   searchByCustIdForm(searchByCustId: any){
     
     this.deleteErrorMessage="";

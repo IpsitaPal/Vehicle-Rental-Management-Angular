@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from 'src/app/booking';
 import { BookingAddComponent } from 'src/app/booking/booking-add/booking-add.component';
 import { BookingService } from 'src/app/booking/booking.service';
+import { CommonService } from 'src/app/common.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
 import { Payment } from 'src/app/payment';
@@ -33,9 +34,10 @@ export class PaymentAddComponent implements OnInit {
   bookingId: any;
   booking!: Booking;
   cardDetail: String = "";
-  
+  role: String;
   constructor(private paymentService: PaymentService, private router: Router, 
-    private activatedRoute: ActivatedRoute, private bookingService: BookingService) { 
+    private activatedRoute: ActivatedRoute, private bookingService: BookingService, private service: CommonService) { 
+      this.role = this.service.getRole();
   }
 
   ngOnInit(): void {
@@ -50,6 +52,9 @@ export class PaymentAddComponent implements OnInit {
           this.payment = new Payment(0, "Credit", new Date(), this.booking, "Paid");
           console.log("Hello from add component" + JSON.stringify(this.payment));
           this.paymentService.addPayment(this.payment).subscribe((response: any) => {
+              if(this.role == 'admin')
+                this.router.navigate(['/booking']);
+              if(this.role == 'customer')
                   this.router.navigate(['/bookingby']);
           });
         });

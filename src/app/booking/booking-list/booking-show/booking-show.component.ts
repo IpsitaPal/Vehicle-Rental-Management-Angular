@@ -12,6 +12,7 @@ export class BookingShowComponent implements OnInit {
   @Output() delete: any = new EventEmitter();
   @Output() update: any = new EventEmitter();
   @Output() show: any = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -25,8 +26,15 @@ export class BookingShowComponent implements OnInit {
     this.delete.emit(booking);
   }
 
-  showPayment(booking: any) {
-    this.show.emit(booking);
+  showPayment(payment: any) {
+    console.log("payment - booking: " + JSON.stringify(this.payment));
+    this.show.emit(payment);
+  }
+
+  isCancelled() : boolean {
+    if(this.payment.paymentStatus == "Cancelled")
+      return true;
+    return false;
   }
 
 }

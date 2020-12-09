@@ -15,8 +15,12 @@ export class Payment {
 		this.booking = booking;
 		this.paymentStatus = paymentStatus;
 	}
-	
+	/*setPaymentId(paymentId: number) {
+		this.paymentId = paymentId;
+	}	
+
+	getPaymentId(paymentId: number): number{
+		return this.paymentId;
+	}*/	
 }
 
-
-//booking - proceed to payment. - id - auto, date - current, mode - credit, payment status - success

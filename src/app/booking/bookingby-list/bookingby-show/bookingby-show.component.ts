@@ -8,9 +8,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class BookingbyShowComponent implements OnInit {
 
   @Input() booking: any;
+  @Input() payment: any;
   @Output() delete: any = new EventEmitter();
   @Output() update: any = new EventEmitter();
-  
+  @Output() show: any = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -22,6 +24,17 @@ export class BookingbyShowComponent implements OnInit {
 
   deleteBooking(booking: any){
     this.delete.emit(booking);
+  }
+
+  showPaymentBy(payment: any) {
+    console.log("payment - bookingby: " + JSON.stringify(this.payment));
+    this.show.emit(payment);
+  }
+
+  isCancelled() : boolean {
+    if(this.payment.paymentStatus == "Cancelled")
+      return true;
+    return false;
   }
   
 }

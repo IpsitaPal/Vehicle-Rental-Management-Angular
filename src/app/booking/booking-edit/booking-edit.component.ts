@@ -4,6 +4,8 @@ import { Booking } from 'src/app/booking';
 import { CommonService } from 'src/app/common.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
+import { Payment } from 'src/app/payment';
+import { PaymentService } from 'src/app/payment/payment.service';
 import { Vehicle } from 'src/app/vehicle';
 import { BookingService } from '../booking.service';
 
@@ -27,32 +29,33 @@ export class BookingEditComponent implements OnInit {
     bookingDescription: " ", totalCost: 0,distance: 0, customer: this.customerNew, vehicle: this.vehicleNew}
   updatedBooking: Booking ={bookingId: 0, bookingDate: new Date(2010,11,10), bookedTillDate: new Date(2010,11,10),
    bookingDescription: " ", totalCost: 0,distance: 0, customer: this.customerNew, vehicle: this.vehicleNew}
-
-editBookingId: any;
+   
+  editBookingId: any;
+  role: String = "";
 
   constructor(private bookingService: BookingService, private router: Router, 
-    private activatedRoute: ActivatedRoute, private service: CommonService) { 
+    private activatedRoute: ActivatedRoute, private service: CommonService, private paymentService: PaymentService) { 
       this.originalBooking.customer = this.service.customer;
       this.updatedBooking.customer = this.service.customer;
+      this.role = this.service.getRole();
     }
 
   ngOnInit(): void {
-  
-    this.editBookingId = this.activatedRoute.snapshot.paramMap.get('bookingId');
-    //this.originalBooking = this.bookingService.addBooking(this.editBookingId);
 
+    this.editBookingId = this.activatedRoute.snapshot.paramMap.get('bookingId');
     this.bookingService.getBooking(this.editBookingId).subscribe((response: any)=>{
       console.log("Get booking"+ response);
       this.originalBooking = response;
       this.updatedBooking = response
     })
-    //this.updatedBooking=clone(this.originalBooking);
-  
   }
 
   submitEditForm(){
     this.bookingService.updateBooking(this.updatedBooking).subscribe((response: any)=>{
-      this.router.navigate(['/booking']);
+      if(this.role == 'admin')
+        this.router.navigate(['/booking']);
+      if(this.role == 'customer')
+        this.router.navigate(['/bookingby']);
     },
     (exception: any)=>{
       console.log(JSON.stringify(exception));
@@ -61,27 +64,4 @@ editBookingId: any;
     });
   }
 }
-
-//end
-
-
-
-
- // const queryParamEntries = this.activatedRoute.snapshot.queryParamMap.keys.map(key => [key, queryParamMap.get(key)])
-    //const queryParamMap = this.activatedRoute.snapshot['queryParamMap'];
-    //this.originalBooking = this.activatedRoute.snapshot.queryParamMap.get('myQueryParam');
-
-    //const params = this.activatedRoute.snapshot.queryParamMap;
-    /*this.originalBooking = {
-      bookingId: parseInt(queryParamMap.get('bookingId') ?? '0'),
-      bookingDate: queryParamMap.get('bookingDate') ?? new Date(),
-      bookingDate: queryParamMap.get('bookingDate') ?? '',
-      bookingDescription: queryParamMap.get('name') ?? '',
-      totalCost: parseInt(queryParamMap.get('totalCost') ?? '0'),
-      distance: parseInt(queryParamMap.get('totalCost') ?? '0'),
-      customer: queryParamMap.get('customer') ?? '',
-      vehicle: queryParamMap.get('vehicle') ?? 'vehicle',
-    };
-    this.updatedBooking = clone(this.originalBooking);
-    */
     

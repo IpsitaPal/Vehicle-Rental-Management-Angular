@@ -1,12 +1,18 @@
 <app-title></app-title>
-<div class="container-fluid">
-    <h2>Edit customer</h2>
-    
+<div class="container">
+  <br>  
+  <h2>Edit customer</h2>
+    <br>
   <form #customerEditForm="ngForm" (ngSubmit)="submitEditForm()">
       <div class="form-group row">
-        <label for="emailId" class="col-sm-2 col-form-label">Customer ID:</label>
+        <label for="custId" class="col-sm-2 col-form-label">Customer ID:</label>
       <div class="col-sm-10">
-        <div>{{updatedCustomer.customerId}}</div>
+        <input
+          type="text"
+          [(ngModel)]="updatedCustomer.customerId"
+          name="custId"
+          #empControl="ngModel"
+          disabled/>
         <br/>
       </div>
     </div>
@@ -47,7 +53,7 @@
           [(ngModel)]="updatedCustomer.emailId"
           name="emailId"
           #empControl="ngModel"
-          required
+          disabled
         /><br />
       </div>
     </div>
@@ -79,7 +85,7 @@
         <br />
       </div>
     </div>
-    
+    <br>
     <div style='margin:0 4px 0 4px' class="form-group row">
       <input type="submit" class="btn btn-info" value="Update" (click)="submitEditForm()">
     </div>

@@ -32,6 +32,7 @@ const routes: Routes = [
   
   {path: 'booking', component:BookingListComponent},
   {path: 'booking/add', component:BookingAddComponent},
+  {path: 'booking/add/:vehicleId', component:BookingAddComponent},
   {path: 'booking/edit/:bookingId', component:BookingEditComponent},
   {path: 'bookingby', component:BookingbyListComponent},
 

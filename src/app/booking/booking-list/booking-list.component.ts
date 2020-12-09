@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Booking } from 'src/app/booking';
+import { CommonService } from 'src/app/common.service';
 import { Payment } from 'src/app/payment';
 import { PaymentService } from 'src/app/payment/payment.service';
 import { BookingService } from '../booking.service';
@@ -12,9 +13,11 @@ import { BookingService } from '../booking.service';
 })
 export class BookingListComponent implements OnInit {
 
+  role: String = ''
   bookings: Booking[] = [];
   payments: Payment[] = [];
   payment!: Payment;
+  modalPayment!: Payment;
   searchByDate: any;
   searchByCustId:any;
   searchByDateErrorMessage: any;
@@ -23,9 +26,13 @@ export class BookingListComponent implements OnInit {
   paymentErrorMessage: String = '';
   errorMessage: String = '';
   //searchByCustIdErrorMessage: any;
-  
+  vehicleId: any;
+  paymentBool: boolean = false;
+
   constructor(private bookingService: BookingService, private router: Router,
-                  private paymentService: PaymentService) { }
+                  private paymentService: PaymentService, private service: CommonService) { 
+                    this.role = this.service.getRole();
+  }
 
   ngOnInit(): void {
     this.paymentService.getAllPayments().subscribe(
@@ -40,7 +47,7 @@ export class BookingListComponent implements OnInit {
   }
 
   displayAddForm(){
-    this.router.navigate(['/booking/add']);
+    this.router.navigate(['/booking/add', this.vehicleId]);
   }
   
   updateBookingParent(bookingId: any){	
@@ -49,20 +56,11 @@ export class BookingListComponent implements OnInit {
   }
   
   deleteBookingParent(paymentId: any) {
-    /*this.searchByCustId="";
-    this.searchByDate="";
-    this.deleteErrorMessage="";
-    this.searchByDateErrorMessage="";
-    this.searchByCustIdErrorMessage="";
-    this.bookingService.deleteBooking(bookingId).subscribe((response: any)=>{
-      this.bookings = response;
-    },
-    (exception: any)=>{
-      console.log(JSON.stringify(exception));
-      this.deleteErrorMessage = exception.error.message;
-    });*/
     this.paymentService.deletePayment(paymentId).subscribe((response: any) => {
-      this.router.navigate(['/booking']); 
+      if(this.role == 'admin')
+          this.router.navigate(['/booking']);
+      if(this.role == 'customer')
+          this.router.navigate(['/bookingby']);
     });
   }
 
@@ -108,10 +106,13 @@ export class BookingListComponent implements OnInit {
     });
   }
 
-  showPaymentParent(booking: any) {
-    this.paymentService.getAllPaymentsByBooking(booking.bookingId)
-        .subscribe((response: Payment) => { this.payment = response }
-      );
+  showPaymentParent(payment: Payment) {
+    this.paymentBool = true;
+    this.modalPayment = payment;
+  }
+
+  closeShowPayment() {
+    this.paymentBool = false;
   }
 
 }

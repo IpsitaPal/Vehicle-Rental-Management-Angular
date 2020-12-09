@@ -8,10 +8,6 @@ import { User } from '../user';
 })
 export class UserService {
 
-  userArray=[
-    {userid:'533',password:'saikiran'}
-  ];
-
   constructor(private httpClient: HttpClient) { }
 
   getAllUsers(): any {

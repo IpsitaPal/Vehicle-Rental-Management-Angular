@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: '[app-vehicle-show]',
@@ -11,7 +12,7 @@ export class VehicleShowComponent implements OnInit {
   @Output() delete: any = new EventEmitter();
   @Output() update: any = new EventEmitter();
 
-  constructor() {
+  constructor(private router: Router) {
     
    }
 
@@ -24,8 +25,8 @@ export class VehicleShowComponent implements OnInit {
   deleteVehicle(vehicle: any){
     this.delete.emit(vehicle);
   }
-/*
+
   addBooking(vehicle: any){
-    this.router.navigate('[]')
-  }*/
+    this.router.navigate(['/booking/add', vehicle.vehicleId]);
+  }
 }

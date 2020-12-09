@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from 'src/app/booking';
 import { CommonService } from 'src/app/common.service';
 import { Customer } from 'src/app/customer';
@@ -27,15 +27,19 @@ export class BookingAddComponent implements OnInit {
     location: '', capacity: '', chargesPerKM: 0, fixedCharges: 0, driver: this.driverNew }
   booking: Booking ={bookingId: 0, bookingDate: new Date(Date.now()), bookedTillDate: new Date(Date.now()), bookingDescription: " ", 
     totalCost: 0,distance: 0, customer: this.customerNew, vehicle: this.vehicleNew}
+  vehicleId: any;
   
-  constructor(private bookingService: BookingService, private router: Router, 
-    private service: CommonService, private vehicleService: VehicleService) {
+  constructor(private bookingService: BookingService, private service: CommonService, 
+    private vehicleService: VehicleService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.booking.customer = this.service.customer;
     this.role = this.service.getRole();
    }
-
-  ngOnInit(): void {
-  }
+   
+   ngOnInit(): void {
+     this.vehicleId = this.activatedRoute.snapshot.paramMap.get('bookingId');
+     this.booking.vehicle.vehicleId = this.vehicleId; 
+   }
+  
 
   submitAddForm(bookingForm:any){
     this.vehicleErrorMessage ='';
@@ -50,7 +54,7 @@ export class BookingAddComponent implements OnInit {
         this.router.navigate(['/payment/add/', this.booking.bookingId]);
     },
     (exception: any)=>{
-      console.log(JSON.stringify(exception));
+      console.log("From book add" + JSON.stringify(exception));
       this.formValidErrorMessage = exception.error.Errors;
       this.vehicleErrorMessage = exception.error.message;
     });

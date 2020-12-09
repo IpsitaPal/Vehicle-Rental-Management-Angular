@@ -1,46 +1,57 @@
 <app-title></app-title>
 <div class="col-md-6 user-container">
   <h2 class="text-center">Add Customer</h2>
-  <form #bookingForm="ngForm" (ngSubmit)="addCustomer()">
+  <h4 class="text-danger">{{formValidErrorMessage}}</h4>
+  <form #custForm="ngForm" (ngSubmit)="addCustomer()">
   
     <div class="form-group">
       <label for="email">E-mail:</label>
+
       <input 
+        id="email" 
         type="email" 
-        placeholder="email" 
-        [(ngModel)]="customer.emailId"
-        #custControl="ngModel"
-        name="email" 
+        placeholder="Email" 
         class="form-control" 
-        id="email"emailId is required>
-        <div *ngIf="custControl.touched">Enter email</div>
-        
-    </div>
+        [(ngModel)]="customer.emailId"
+        #custEmail="ngModel"
+        name="email"
+        size="30"
+        pattern="[a-z0-9]{3,}@[a-z]{3,}.[a-z]{2,}"
+        required>
+      <span class="text-danger" *ngIf="custEmail.invalid && custEmail.touched">
+          Email ID is Invalid
+      </span>    
+    </div> 
+
     <div class="form-group">
       <label for=" password ">  Password:</label>
-      <input 
-        type="password" 
-        placeholder=" Password" 
-        name="password" 
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-        class="form-control" 
-        id=" password"
-        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+        <input 
+            type="password" 
+            placeholder=" Password" 
+            name="password" 
+            [(ngModel)]="user.password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            class="form-control" 
+            #custPass1="ngModel"
+            id=" password"
+            required>
+            <span class="text-danger" *ngIf="custPass1.invalid && custPass1.touched">
+              Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
+          </span>  
     </div>
-    
+        
     <div class="form-group">
       <label for="Confirm password"> Confirm Password:</label>
-      <input 
-        type="password" 
-        placeholder="Confirm Password" 
-        [(ngModel)]="user.password"
-        name="password" 
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-        class="form-control" 
-        id="Confirm password"
-        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+        <input 
+            type="password" 
+            placeholder="Confirm Password" 
+            name="password" 
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            class="form-control" 
+            id="Confirm password"
+            required>
     </div>
-    
+        
 
     <div class="form-group">
       <label for="firstName">First Name:</label>
@@ -48,11 +59,13 @@
         type="text" 
         placeholder="First Name" 
         [(ngModel)]="customer.firstName"
-        #custControl="ngModel"
+        #custFname="ngModel"
         name="firstName" 
+        pattern="[A-Za-z]{3,}"
         class="form-control" 
-        id="firstName" firstName is required>
-        <div *ngIf="custControl.touched">Enter firstName</div>
+        id="firstName"
+        required>
+        <div class="text-danger" *ngIf="custFname.invalid && custFname.touched">First Name is Invalid</div>
     </div>
 
     <div class="form-group">
@@ -60,41 +73,44 @@
       <input 
         placeholder="Last name" 
         [(ngModel)]="customer.lastName"
-        #custControl="ngModel"
+        #custLname="ngModel"
         name="lastName" 
         class="form-control" 
-        id="lastName" lastName is required>
-        <div *ngIf="custControl.touched">Enter lastName</div>
+        id="lastName" 
+        required>
+        <div class="text-danger"  *ngIf="custLname.invalid && custLname.touched">Last Name is Invalid</div>
     </div>
 
     <div class="form-group">
       <label for="mobilenumber">MobileNumber:</label>
-      <input required maxlength="10" minlength="10"
+      <input 
         type="number" 
-        placeholder="mobilenumber" 
+        placeholder="Mobile Number" 
         [(ngModel)]="customer.mobileNumber"
-        #custControl="ngModel"
+        #custNum="ngModel"
         name="mobilenumber" 
+        pattern="[0-9]{10}"
         class="form-control" 
-        id="mobilenumber"mobileNumber is required>
-        <div *ngIf="custControl.touched">Enter mobileNumber</div>
+        id="mobilenumber"
+        required>
+        <div class="text-danger" *ngIf="custNum.touched && custNum.invalid">Enter Valid Mobile Number</div>
     </div>
 
     <div class="form-group">
       <label for="address">Address:</label>
       <input 
         type="text" 
-        placeholder="address"
+        placeholder="Address"
         [(ngModel)]="customer.address"
-        #custControl="ngModel" 
+        #custAddr="ngModel" 
         name="address" 
         class="form-control" 
         id="address"address is required>
-        <div *ngIf="custControl.touched">Enter address</div>
+        <div class="text-danger" *ngIf="custAddr.touched && custNum.invalid">Enter Valid Address</div>
     </div>
 
     <button type="submit" class="btn btn-info"
-      [disabled]="bookingForm.invalid" >
+      [disabled]="custForm.invalid" >
         Add
 
       </button>

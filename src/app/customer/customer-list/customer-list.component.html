@@ -1,4 +1,32 @@
 <app-title></app-title>
+<div class="container">
+	<div class="row">
+        <div class="col-8"><h1>Customer Details</h1></div>
+		<div class="col-4" style="align-items: right; padding:15px;">
+        <form 
+        style='margin:0 8px 0 8px' 
+        class="form-inline searchCust" 
+        #customerByCustfirstNameForm="ngForm" 
+        (ngSubmit)="searchByCustFirstNameForm()">
+        <h6 class="text-danger"></h6>
+            <input
+            type="text"
+            [(ngModel)]="searchByCustfirstName"
+            name="searchByCustfirstName"
+            #CustIdControl="ngModel"
+            placeholder="Customer First Name"
+            required/>
+            <button style='margin:0 8px 0 8px'
+                type="submit"
+                class="btn btn-info"
+                [disabled]="CustIdControl.invalid">
+                Enter
+            </button>
+            <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAllForm()'>View All </button>
+        </form>
+    </div>
+</div>
+</div>
     <!--div class=" left row ">
         <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAll()'>View All </button>
     </div>
@@ -24,11 +52,8 @@
             
         </form-->
 
-        <div class=" bookingName ">
-            <h3 >Customer Details</h3>
-        </div>
     <div class= " content container mt-5" >
-    <table class="table table-wrapper table-bordered table-hover">
+    <table class="table table-hover">
             <thead class="thead-dark ">
                 <tr>
                     <th>Customer ID</th>

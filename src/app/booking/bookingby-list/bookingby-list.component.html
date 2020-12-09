@@ -21,8 +21,6 @@
                     <th>Total Cost</th>
                     <th>Distance</th>
                     <th>Status</th>
-                    <th>Customer</th>
-                    <th>Vehicle</th>
                     <th></th>
                     <th>Edit</th>
                     <th>Payment Details</th>
@@ -31,11 +29,12 @@
         
         <tbody>
             <tr *ngFor = "let payment of payments"
-                app-booking-show 
+                app-bookingby-show 
                 [booking] = "payment.booking"
                 [payment] = "payment"
                 (update)="updateBookingParent($event)"
-                (delete)="deleteBookingParent($event)">
+                (delete)="deleteBookingParent($event)"
+                (show)="showPaymentByParent($event)">
             </tr>
         </tbody>
     
@@ -44,3 +43,27 @@
 
     <div *ngIf = "noDataErrorMessage == '' else elseBlock" ></div>
 	<ng-template #elseBlock><h4 style="color:rgb(0, 0, 0); text-align: center;">{{noDataErrorMessage}}</h4></ng-template>
+
+    <div *ngIf = "paymentBool">
+        <div class="modal fade" id="bookingModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Payment Details</h4>
+                        <button type="button" class="close" data-dismiss="modal" (click)="closeShowPaymentBy()" >&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h6><b>Payment Id: </b>#{{modalPayment.paymentId}}</h6>
+                        <h6><b>Total Cost: </b>Rs.{{modalPayment.booking.totalCost}}</h6>
+                        <h6><b>Mode: </b>{{modalPayment.paymentMode}}</h6>
+                        <h6><b>Status: </b>{{modalPayment.paymentStatus}}</h6>
+                        <h6><b>Paid On: </b>{{modalPayment.paymentDate | date: 'dd/MM/yyyy'}}</h6>
+                    </div>
+                    <!--div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div-->
+                </div>
+            </div>
+        </div> 
+    </div>

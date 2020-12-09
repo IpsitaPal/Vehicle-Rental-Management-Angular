@@ -16,36 +16,21 @@
     
 </td>
 <td>
-    <button class= 'btn btn-primary'
+    <button 
+    [disabled]="isCancelled()"
+    class= 'btn btn-primary'
     (click)='updateBooking(booking.bookingId)'>
     Edit
     </button>
 </td>
 
 <td>
-    <div class="container">        
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Show</button>
-    
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Payment Details</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <h6><b>Payment Id: </b>#{{payment.paymentId}}</h6>
-                        <h6><b>Total Cost: </b>Rs.{{payment.booking.totalCost}}</h6>
-                        <h6><b>Mode: </b>{{payment.paymentMode}}</h6>
-                        <h6><b>Status: </b>{{payment.paymentStatus}}</h6>
-                        <h6><b>Paid On: </b>{{payment.paymentDate | date: 'dd/MM/yyyy'}}</h6>
-                    </div>
-                    <!--div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div-->
-                </div>
-            </div>
-        </div> 
-    </div>
+    <button 
+        type="button" 
+        class="btn btn-info" 
+        data-toggle="modal" 
+        data-target="#myModal" 
+        (click)="showPayment(payment)">
+    Show
+    </button>
 </td>
