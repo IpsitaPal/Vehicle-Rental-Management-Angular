@@ -6,7 +6,7 @@
 		<div class="col-3" style="align-items: right; padding:15px;">
 			<form>
 				<div class="row">
-				<select 
+				<select
 					class="form-control"
 					(change)="findBy()" 
 					[(ngModel)]="idType" 
@@ -49,10 +49,21 @@
 						(delete)="deletePaymentParent($event)"
 						class="dropdown">
 					</tr>
+					
 			</table>
 		
 	</div>
+	<div *ngIf = "errorMessage == '' else elseBlock" ></div>
+	<ng-template #elseBlock><h4 style="color:rgb(0, 0, 0); text-align: center;">{{errorMessage}}</h4></ng-template>
 
 
-<div *ngIf = "errorMessage == '' else elseBlock"></div>
-<ng-template #elseBlock><h3 style="color:red;">{{errorMessage}}</h3></ng-template>
+	<!--div *ngIf = "revenue != 0 else elseBlock" ></div>
+	<ng-template #elseBlock><h4 style="color:rgb(0, 0, 0); text-align: center;">{{errorMessage}}</h4></ng-template>
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-9"><h4><b>Total Revenue: </b>Rs. {{revenue}}</h4></div>
+	</div>
+</div-->

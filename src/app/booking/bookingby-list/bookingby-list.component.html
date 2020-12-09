@@ -1,14 +1,17 @@
-<html>
-    <div class=" left row ">
-       
-        <button style='margin: 0 8px 0 8px' class=" btn btn-success" (click)='displayAddForm()'>Add New Booking</button>
-    </div>
-        
-        <div class=" bookingName ">
-            <h3 >My Booking</h3>
+<app-title></app-title>
+    <div class="container">
+        <div class="row">   
+            <div class="col-9"><h3>My Booking</h3></div>
+            <div class="col-3" style="align-items: right; padding:15px;">
+                <button 
+                    class=" btn btn-success" 
+                    (click)='displayAddForm()'>Add New Booking</button>
+            </div>
         </div>
-    <div class= " content container mt-5" >
-    <table class="table table-wrapper table-bordered table-hover">
+    </div>    
+
+    <div class= "container mt-5" >
+    <table class="table  table-hover">
             <thead class="thead-dark ">
                 <tr>
                     <th>Id</th>
@@ -17,16 +20,20 @@
                     <th>Description</th>
                     <th>Total Cost</th>
                     <th>Distance</th>
+                    <th>Status</th>
+                    <th>Customer</th>
                     <th>Vehicle</th>
                     <th></th>
                     <th>Edit</th>
+                    <th>Payment Details</th>
                 </tr>
                 </thead>   
         
         <tbody>
-            <tr *ngFor = "let booking of bookings"
-                app-bookingby-show 
-                [booking] = "booking"
+            <tr *ngFor = "let payment of payments"
+                app-booking-show 
+                [booking] = "payment.booking"
+                [payment] = "payment"
                 (update)="updateBookingParent($event)"
                 (delete)="deleteBookingParent($event)">
             </tr>
@@ -34,5 +41,6 @@
     
         </table>
     </div>    
-    <app-title></app-title>
-</html>
+
+    <div *ngIf = "noDataErrorMessage == '' else elseBlock" ></div>
+	<ng-template #elseBlock><h4 style="color:rgb(0, 0, 0); text-align: center;">{{noDataErrorMessage}}</h4></ng-template>

@@ -15,7 +15,8 @@ import { PaymentService } from '../payment.service';
 export class PaymentListComponent implements OnInit {
 
   driver: Driver = new Driver(0, '', '', '', '', '', 0, '');
-  vehicle: Vehicle = new Vehicle(0, '', '', '', '', '', '', 0, 0, this.driver);
+  vehicle: Vehicle = {vehicleId: 0, vehicleNumber: '', type: '', category: '', description: '',
+    location: '', capacity: '', chargesPerKM: 0, fixedCharges: 0, driver: this.driver }
   customer: Customer = new Customer(1, '', '', '', '', '');
   booking: Booking = new Booking(0, new Date(), new Date(), '', 0, 0, this.customer, this.vehicle);
   payment: Payment = new Payment(0, '', new Date(), this.booking, '');
@@ -24,14 +25,24 @@ export class PaymentListComponent implements OnInit {
   errorMessage: String = "";
   id: number = 0;
   idType!: String;
+  revenue: number = 0;
 
   constructor(private paymentService: PaymentService, private router: Router) { }
 
   ngOnInit(): void {
+    this.revenue = this.paymentService.getTotalRevenue().subscribe(
+        (data: any) => 
+          {
+            this.revenue=data;
+          });
     this.paymentService.getAllPayments().subscribe(
         (response: any[])=> {    this.allPayments = response;   },
         (exception: any) => {    this.errorMessage = exception.error.message;          }
     );
+    this.paymentService.getTotalRevenue().subscribe(
+      (response: any)=> {    this.revenue = response;   },
+      (exception: any) => {    this.errorMessage = exception.error.message;          }
+  );
   }
 
   findBy() {
@@ -67,7 +78,7 @@ export class PaymentListComponent implements OnInit {
   deletePaymentParent(id: number) {
     console.log("Delete from list" + id);
     this.paymentService.deletePayment(id).subscribe((response: any) => {
-      window.location.reload();
+      this.router.navigate(['/payemnt']);
     });
   }
 

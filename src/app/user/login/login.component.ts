@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   password:any;
   role:any;
   user!: User; 
-  
+  showErrorMessage: any;
   constructor(private userService:UserService, private router:Router, private service: CommonService) {
   
    }
@@ -27,35 +27,22 @@ export class LoginComponent implements OnInit {
   
   submitLoginForm(form:any) {
     this.user =new User(this.userid, this.password, "anonymous");
-    console.log(JSON.stringify(this.user));
     this.userService.checkLogin(this.user)
-      .subscribe(  data=>{
-            console.log(JSON.stringify(data));
-            if (data != null) {
-                    //this.user={userId:this.userid,password:this.password,role:'admin'};
-                    this.service.setCurrentUser(data);
-                    this.router.navigate(["/home"]);
-                  }
-              });
+      .subscribe((data: any) =>
+                        {
+                          if (data != null) {
+                              this.service.setCurrentUser(data);
+                              this.router.navigate(["/home"]);
+                          }
+                        },
+                  (error: any) => 
+                        {
+                          this.showErrorMessage = true;
+                          console.log("ErrorOccured: "+this.showErrorMessage)
+                          alert("Invalid Credentials")
+                        }
+              );
   }
 }
 
-     /*console.log(data)
-      if(this.user1.role=="customer"){
-        alert(" Customer Logged in");
-        this.router.navigate(["/home"]) //customer page
-      }
-      else if(this.user1.role=="admin"){
-        localStorage.setItem("currentUser",this.user1);
-        alert(" Admin Logged in");
-        this.router.navigate(["/admin"])
-      }
-
-    
-    }
-    else{
-      alert("invalid credentials");
-    }
-
-*/
 

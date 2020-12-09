@@ -1,15 +1,15 @@
 export class Driver {
     driverId: number;
-    firstName: String;
-    lastName: String;
-    contactNumber: String;
-    email: String;
-    address: String;
+    firstName: string;
+    lastName: string;
+    contactNumber: string;
+    email: string;
+    address: string;
     chargesPerDay: number;
-    licenseNo: String;
+    licenseNo: string;
 
-    constructor(driverId: number, firstName: String, lastName: String, contactNumber: String,
-        email: String, address: String, chargesPerDay: number, licenseNo: String) {
+    constructor(driverId: number, firstName: string, lastName: string, contactNumber: string,
+        email: string, address: string, chargesPerDay: number, licenseNo: string) {
         this.driverId = driverId;
         this.firstName = firstName;
         this.lastName = lastName;

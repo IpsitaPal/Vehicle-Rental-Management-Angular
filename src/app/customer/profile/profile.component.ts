@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonService } from 'src/app/common.service';
 import { Customer } from 'src/app/customer';
 
@@ -11,15 +12,16 @@ export class ProfileComponent implements OnInit {
 
   customer: Customer = new Customer(0, '', '', '', '', '');
   
-  constructor(private service: CommonService) { 
-    console.log(JSON.stringify(this.customer));
+  constructor(private service: CommonService, private router: Router) { 
     this.customer = this.service.customer;
-    console.log(JSON.stringify("after" + this.customer));
   }
 
   ngOnInit(): void {
   }
 
+  editCustomer() {
+    this.router.navigate(['/customer/edit/' + this.customer.customerId]);
+  }
 
 
 }

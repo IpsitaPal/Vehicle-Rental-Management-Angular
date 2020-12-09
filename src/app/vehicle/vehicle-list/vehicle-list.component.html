@@ -1,34 +1,45 @@
 <app-title></app-title>
-    <div class=" left row ">
-        <button style='margin: 0 8px 0 8px' class=" btn btn-success" (click)='displayAddForm()'>Add New Vehicle</button>
-        <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAllForm()'>View All </button>
-    </div>
+<div class="container">
+	<div class="row">
+		<div class="col-8"><h1>Vehicles</h1></div>
+        <div class="col-4" style="align-items: right; padding:15px;">
+            <div class="row ">
+                <form 
+                style='margin:0 8px 0 8px' 
+                class="form-inline searchVhcl" 
+                #vehicleByVhclIdForm="ngForm" 
+                (ngSubmit)="searchByVhclIdForm(searchByVhclId)">
+                <h6 class="text-danger">{{searchByVhclIdErrorMessage}} </h6>
+                <input
+                    type="number"
+                    [(ngModel)]="searchByVhclId"
+                    name="searchByVhclId"
+                    #vehicleVhclIdControl="ngModel"
+                    placeholder="Vehicle ID"
+                    required/>
+                <button 
+                    style='margin:0 8px 0 8px'
+                    type="submit"
+                    class="btn btn-info"
+                    [disabled]="vehicleVhclIdControl.invalid">
+                Vehicle ID
+                </button>
+                </form>
+            </div> <br>
+            <div class="row ">
+                <button style='margin: 0 8px 0 8px' class=" btn btn-success" (click)='displayAddForm()'>Add New Vehicle</button>
+                <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAllForm()'>View All </button>
+            </div> 
+		</div>
+	</div>
+</div>
+    
 
-    <form 
-        style='margin:0 8px 0 8px' 
-        class="form-inline searchVhcl" 
-        #vehicleByVhclIdForm="ngForm" 
-        (ngSubmit)="searchByVhclIdForm(searchByVhclId)">
-        <h6 class="text-danger">{{searchByVhclIdErrorMessage}} </h6>
-        <input
-            type="number"
-            [(ngModel)]="searchByVhclId"
-            name="searchByVhclId"
-            #vehicleVhclIdControl="ngModel"
-            placeholder="Vehicle ID"
-            required/>
-        <button 
-            style='margin:0 8px 0 8px'
-            type="submit"
-            class="btn btn-info"
-            [disabled]="vehicleVhclIdControl.invalid">
-        Vehicle ID
-        </button>
-    </form>
+   
 
-    <div class=" vehicleName ">
+    <!--div class=" vehicleName ">
         <h4 >Vehicles</h4>
-    </div>
+    </div-->
     <div class= " content container mt-5" >
     <table class="table table-hover">
         <thead class="thead-dark ">
@@ -59,3 +70,6 @@
       </tbody>
     </table>
     </div>
+    <div *ngIf = "errorMessage == '' else elseBlock" ></div>
+    <ng-template #elseBlock><h4 style="color:rgb(0, 0, 0); text-align: center;">{{errorMessage}}</h4></ng-template>
+ 

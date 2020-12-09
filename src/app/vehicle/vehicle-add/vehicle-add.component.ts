@@ -31,7 +31,7 @@ export class VehicleAddComponent implements OnInit {
         this.vehicleService.addVehicle(this.newVehicle)
           .subscribe((response: any) => {
             console.log(response);
-        this.router.navigate(['/vehicle-list']);
+        this.router.navigate(['/vehicle']);
       },
       (exception: any)=>{
         console.log(JSON.stringify(exception));

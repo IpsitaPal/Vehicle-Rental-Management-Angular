@@ -36,4 +36,8 @@ export class PaymentService {
   getMonthlyRevenue(fromDate: Date, tillDate: Date): any {
     return this.httpClient.get("http://localhost:8080/ovms/payment/" + fromDate + "/" + tillDate);
   }
+
+  getTotalRevenue() : any {
+    return this.httpClient.get("http://localhost:8080/ovms/payment/revenue");
+  }
 }

@@ -1,40 +1,18 @@
-<!--div  class="content container-fluid">
-  <h2>Edit customer</h2>
+<app-title></app-title>
+<div class="container-fluid">
+    <h2>Edit customer</h2>
+    
   <form #customerEditForm="ngForm" (ngSubmit)="submitEditForm()">
-    <!--div class="form-group row">
-      <label for="emailId" class="col-sm-2 col-form-label">Email ID:</label>
+      <div class="form-group row">
+        <label for="emailId" class="col-sm-2 col-form-label">Customer ID:</label>
       <div class="col-sm-10">
-        <div>{{updatedCustomer.emailId}}</div>-->
-        
-        <!--<input
-          //changed the updateEmployee at ngModel at
-          type="number"
-          [(ngModel)]="updatedEmployee.id"
-          name="empId"
-          #empControl="ngModel"
-          *ngIf = "editing"
-          required
-        />-->
-
-
-        <!--br />
+        <div>{{updatedCustomer.customerId}}</div>
+        <br/>
       </div>
     </div>
+    
     <div class="form-group row">
-      <label for="emailId" class="col-sm-2 col-form-label">emailId:</label>
-      <div class="col-sm-10">
-        
-        <input
-          type="text"
-          [(ngModel)]="updatedCustomer.emailId"
-          name="emailId"
-          #empControl="ngModel"
-          required
-        /><br />
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="firstName" class="col-sm-2 col-form-label">firstName:</label>
+      <label for="firstName" class="col-sm-2 col-form-label">First Name:</label>
       <div class="col-sm-10">
         
         <input
@@ -47,7 +25,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="lastName" class="col-sm-2 col-form-label">lastName:</label>
+      <label for="lastName" class="col-sm-2 col-form-label">Last Name:</label>
       <div class="col-sm-10">
         
         <input
@@ -61,7 +39,21 @@
     </div>
     
     <div class="form-group row">
-      <label for="mobileNumber" class="col-sm-2 col-form-label">mobileNumber:</label>
+      <label for="emailId" class="col-sm-2 col-form-label">Email Id:</label>
+      <div class="col-sm-10">
+        
+        <input
+          type="text"
+          [(ngModel)]="updatedCustomer.emailId"
+          name="emailId"
+          #empControl="ngModel"
+          required
+        /><br />
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="mobileNumber" class="col-sm-2 col-form-label">Mobile Number:</label>
       <div class="col-sm-10">
        
         <input
@@ -75,7 +67,7 @@
     </div>
 
     <div class="form-group row">
-      <label for="address" class="col-sm-2 col-form-label">address:</label>
+      <label for="address" class="col-sm-2 col-form-label">Address:</label>
       <div class="col-sm-10">
         
         <input
@@ -88,10 +80,9 @@
       </div>
     </div>
     
-    
-
     <div style='margin:0 4px 0 4px' class="form-group row">
-      <input type="submit" class="btn btn-info" value="Update">
+      <input type="submit" class="btn btn-info" value="Update" (click)="submitEditForm()">
     </div>
+
   </form>
-</div-->
+</div>

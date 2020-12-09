@@ -2,13 +2,13 @@ import { Booking } from './booking';
 
 export class Payment {
     paymentId: number;
-	paymentMode: String;
+	paymentMode: string;
 	paymentDate: Date;
 	booking: Booking;
-    paymentStatus: String;
+    paymentStatus: string;
 
-    constructor(paymentId: number, paymentMode: String, paymentDate: Date, 
-			booking: Booking, paymentStatus: String) {
+    constructor(paymentId: number, paymentMode: string, paymentDate: Date, 
+			booking: Booking, paymentStatus: string) {
         this.paymentId = paymentId;
 		this.paymentMode = paymentMode;
 		this.paymentDate = paymentDate;

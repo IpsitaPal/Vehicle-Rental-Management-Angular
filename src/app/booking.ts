@@ -5,13 +5,13 @@ export class Booking{
     bookingId: number;
     bookingDate: Date;
     bookedTillDate: Date;
-    bookingDescription: String;
+    bookingDescription: string;
     totalCost: number;
     distance: number;
     customer: Customer;
     vehicle: Vehicle;
 
-    constructor(bookingId: number, bookingDate: Date, bookedTillDate: Date, bookingDescription: String, 
+    constructor(bookingId: number, bookingDate: Date, bookedTillDate: Date, bookingDescription: string, 
                   totalCost: number,distance: number, customer: Customer, vehicle: Vehicle){
                       this.bookingId = bookingId;
                       this.bookingDate = bookingDate;

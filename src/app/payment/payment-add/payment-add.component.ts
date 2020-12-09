@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from 'src/app/booking';
+import { BookingAddComponent } from 'src/app/booking/booking-add/booking-add.component';
+import { BookingService } from 'src/app/booking/booking.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
 import { Payment } from 'src/app/payment';
@@ -15,29 +17,43 @@ import { PaymentService } from '../payment.service';
 })
 export class PaymentAddComponent implements OnInit {
 
-  payment: Payment;
-  customer: Customer = new Customer(1, "Alesia", "Braganza", "9879871232", "ale@sia", "Chennai");
-  driver: Driver = new Driver(1, "John", "Doe", "0987654321", "john@doe", "Chennai", 100.0, "dhsd213");
-  vehicle: Vehicle = new Vehicle(2, "TN10K2746", "Bus", "ac", "desc", "Chennai", "25", 25.0, 200.0, this.driver,);
-  booking: Booking = new Booking(2, new Date("2020-12-10"), new Date("2020-12-10"), 
-        "Scheduled", 1200, 12, this.customer, this.vehicle);
+  payment!: Payment;
+/*
+  customer: Customer = {customerId: 0, firstName: '', lastName: '', mobileNumber: '',
+      emailId: '',  address: ''}
+  driver: Driver = {driverId: 0, firstName: '', lastName: '', contactNumber: '',
+    email: '', address: '', chargesPerDay: 0, licenseNo: ''}
+  
+  vehicle: Vehicle = {vehicleId: 0, vehicleNumber: '', type: '', category: '', description: '',
+    location: '', capacity: '', chargesPerKM: 0, fixedCharges: 0, driver: this.driver }
+  
+  booking: Booking = new Booking(0, new Date(), new Date(), "", 0, 0, this.customer, this.vehicle);
+  
+  */
+  bookingId: any;
+  booking!: Booking;
   cardDetail: String = "";
   
-  constructor(private paymentService: PaymentService, private router: Router) { 
-      this.payment = new Payment(0, "Credit", new Date(), this.booking, "Paid");
+  constructor(private paymentService: PaymentService, private router: Router, 
+    private activatedRoute: ActivatedRoute, private bookingService: BookingService) { 
   }
 
   ngOnInit(): void {
+    this.bookingId = this.activatedRoute.snapshot.paramMap.get('bookingId');
   }
 
   add() {
-    //console.log("Hello from add component" + JSON.stringify(this.payment));
-    //set false
-    this.paymentService.addPayment(this.payment).subscribe((response: any) => {
-      
-      this.router.navigate(['/payment']);
-    }
-    );
+    this.bookingService.getBooking(this.bookingId)
+      .subscribe((response: any) => {
+          console.log(JSON.stringify(this.booking));
+          this.booking = response;
+          this.payment = new Payment(0, "Credit", new Date(), this.booking, "Paid");
+          console.log("Hello from add component" + JSON.stringify(this.payment));
+          this.paymentService.addPayment(this.payment).subscribe((response: any) => {
+                  this.router.navigate(['/bookingby']);
+          });
+        });
+    
 
   }
 }

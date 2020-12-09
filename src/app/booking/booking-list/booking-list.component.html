@@ -1,31 +1,28 @@
 <app-title></app-title>
-    <div class=" left row ">
-       
-        <button style='margin: 0 8px 0 8px' class=" btn btn-success" (click)='displayAddForm()'>Add New Booking</button>
-        <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAll()'>View All </button>
-    </div>
-    
-        <form style='margin:0 8px 0 8px' class="form-inline right" #bookingByDateForm="ngForm"
+<div class="container">
+	<div class="row">
+		<div class="col-8"><h1>All Bookings</h1></div>
+        <div class="col-4" style="align-items: right; padding:15px;">
+            <div class="row ">
+            <!--form style='margin:0 8px 0 8px' class="form-inline right" #bookingByDateForm="ngForm"
                                                  (ngSubmit)="searchByDateForm(searchByDate)">
-            <h6 class="text-danger">{{searchByDateErrorMessage}} {{deleteErrorMessage}}</h6>
+                <h6 class="text-danger">{{searchByDateErrorMessage}} {{deleteErrorMessage}}</h6>
             <input
-            type="date"
-            [(ngModel)]="searchByDate"
-            name="searchByDate"
-            #bookingDateControl="ngModel"
-            placeholder="BookingDate"
-            required/>
+                type="date"
+                [(ngModel)]="searchByDate"
+                name="searchByDate"
+                #bookingDateControl="ngModel"
+                placeholder="BookingDate"
+                required/>
             <button style='margin:0 8px 0 8px'
                 type="submit"
                 class="btn btn-info"
-                [disabled]="bookingDateControl.invalid"
-                >
+                [disabled]="bookingDateControl.invalid">
                 <i  class="material-icons">search</i>
             </button>
+            </form-->
             
-        </form>
-   
-        <form style='margin:0 8px 0 8px' class="form-inline searchCust" #bookingByCustIdForm="ngForm" 
+           <form style='margin:0 8px 0 8px' class="form-inline searchCust" #bookingByCustIdForm="ngForm" 
                                                 (ngSubmit)="searchByCustIdForm(searchByCustId)">
             <h6 class="text-danger">{{searchByCustIdErrorMessage}} </h6>
             <input
@@ -38,17 +35,19 @@
             <button style='margin:0 8px 0 8px'
                 type="submit"
                 class="btn btn-info"
-                [disabled]="bookingCustIdControl.invalid"
-                >
+                [disabled]="bookingCustIdControl.invalid">
                 Customer ID
             </button>
-            
-        </form>
-
-        <div class=" bookingName ">
-            <h3 >My Bookings</h3>
-        </div>
-    <div class= "content container mt-5" >
+            </form></div><br>
+            <div class="row ">    
+                <button style='margin: 0 8px 0 8px' class=" btn btn-success" (click)='displayAddForm()'>Add New Booking</button>
+                <button style='margin:0 8px 0 8px' class=" btn btn-success" (click)='displayViewAll()'>View All </button>
+            </div>
+    </div>
+</div>
+</div>
+        
+    <div class= "container mt-5" >
     <table class="table table-hover">
             <thead class="thead-dark ">
                 <tr>
@@ -76,7 +75,9 @@
                 (delete)="deleteBookingParent($event)">
             </tr>
         </tbody>
-    
-        </table>
-    </div>    
-
+       
+    </table>
+</div>    
+    <div *ngIf = "errorMessage == '' else elseBlock" ></div>
+    <ng-template #elseBlock><h4 style="color:rgb(0, 0, 0); text-align: center;">{{errorMessage}}</h4></ng-template>
+ 

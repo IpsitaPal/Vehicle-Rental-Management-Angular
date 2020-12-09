@@ -24,8 +24,8 @@ export class VehicleShowComponent implements OnInit {
   deleteVehicle(vehicle: any){
     this.delete.emit(vehicle);
   }
-
+/*
   addBooking(vehicle: any){
-    
-  }
+    this.router.navigate('[]')
+  }*/
 }

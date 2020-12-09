@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Driver } from 'src/app/driver';
-import { Vehicle } from 'src/app/vehicle';
 import { VehicleService } from '../vehicle.service';
 
 @Component({
@@ -22,10 +21,15 @@ export class VehicleUpdateComponent implements OnInit {
 
   
   constructor(private vehicleService: VehicleService, private router: Router, private activatedRoute: ActivatedRoute) { }
-  ngOnInit(): void {
-   // throw new Error('Method not implemented.');
+  ngOnInit() {
+
+    let vid=this.activatedRoute.snapshot.paramMap.get('vid');
+    this.vehicleService.getVehicle(Number(vid)).subscribe((response: any)=>{
+      this.updatedVehicle=response;
+
+    });
   }
-  
+ 
   submitEditForm(){
     console.log(JSON.stringify(this.updatedVehicle));
     this.vehicleService.updateVehicle(this.updatedVehicle).subscribe((response: any)=>{

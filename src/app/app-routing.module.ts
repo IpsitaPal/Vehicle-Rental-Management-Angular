@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { PaymentAddComponent } from './payment/payment-add/payment-add.component';
 import { PaymentListComponent } from './payment/payment-list/payment-list.component';
 import { BookingAddComponent } from './booking/booking-add/booking-add.component';
@@ -21,21 +22,22 @@ import { CustomerEditComponent } from './customer/customer-edit/customer-edit.co
 import { ProfileComponent } from './customer/profile/profile.component';
 
 const routes: Routes = [
+  
   {path: 'vehicle', component: VehicleListComponent},
   {path: 'vehicle/add', component: VehicleAddComponent},	 
-  {path: 'vehicle/edit', component: VehicleUpdateComponent},	 
+  {path: 'vehicle-edit/:vid', component: VehicleUpdateComponent},	 
   
   {path: 'payment', component: PaymentListComponent},
-  {path: 'payment/add', component: PaymentAddComponent},
+  {path: 'payment/add/:bookingId', component: PaymentAddComponent},
   
   {path: 'booking', component:BookingListComponent},
   {path: 'booking/add', component:BookingAddComponent},
   {path: 'booking/edit/:bookingId', component:BookingEditComponent},
-  {path: 'bookingby/:customerId', component:BookingbyListComponent},
-  
+  {path: 'bookingby', component:BookingbyListComponent},
+
   {path: 'customer', component: CustomerListComponent},
   {path: 'customer/add', component: CustomerAddComponent},
-  {path: 'customer/edit', component: CustomerEditComponent },
+  {path: 'customer/edit/:customerId', component: CustomerEditComponent },
   {path: 'profile', component: ProfileComponent },
   
   {path: 'user', component: UserListComponent },
@@ -44,6 +46,7 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent },
   {path: 'home', component: HomeComponent },
   {path: 'admin', component: AdminComponent }
+
 ];
 
 @NgModule({

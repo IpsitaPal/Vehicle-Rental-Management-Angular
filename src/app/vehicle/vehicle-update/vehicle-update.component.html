@@ -1,8 +1,9 @@
-<div class="content container-fluid">
+<app-title></app-title>
+<div class="container-fluid">
     <h2>Edit Vehicle</h2>
     <form #vehicleEditForm="ngForm" (ngSubmit)="submitEditForm()">
      <div class="form-group row">
-        <label for="vehicleId" class="col-sm-2 col-form-label">Vehicle ID:</label>
+        <label for="vehicleId" class="col-sm-2 col-form-label">Vehicle ID:</label><div>{{updatedVehicle.vehicleId}}</div>
         <div class="col-sm-10">
          
   

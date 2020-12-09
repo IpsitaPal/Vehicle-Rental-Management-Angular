@@ -1,13 +1,13 @@
 export class Customer{
     customerId: number;
-    firstName: String;
-    lastName: String;
-    mobileNumber: String;
-    emailId: String;
-    address: String;
+    firstName: string;
+    lastName: string;
+    mobileNumber: string;
+    emailId: string;
+    address: string;
 
-    constructor(customerId: number, firstName: String, lastName: String, mobileNumber: String,
-        emailId: String,  address: String){
+    constructor(customerId: number, firstName: string, lastName: string, mobileNumber: string,
+        emailId: string,  address: string){
             this.customerId = customerId;
             this.firstName = firstName;
             this.lastName = lastName;

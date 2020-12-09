@@ -12,6 +12,7 @@ vehicles: any;
 searchByVhclId: any;
 searchByVhclIdErrorMessage: any;
 deleteErrorMessage:any;
+errorMessage: String = '';
 
   constructor(private vehicleService: VehicleService, private router: Router) { }
  
@@ -21,19 +22,20 @@ deleteErrorMessage:any;
     this.vehicleService.getAllVehicles().subscribe((response: any)=>{
       console.log("Get all"+ response);
       this.vehicles=response;
-    })
+    },
+    (exception: any) => {    this.errorMessage = exception.error.message;          })
   }
 
   
   displayAddForm(){
-    this.router.navigate(['/vehicle-add']);
+    this.router.navigate(['/vehicle/add']);
   }
 
   updateVehicleParent(vehicle: any)
   {
-    this.router.navigate(['/vehicle/edit'], {queryParams: vehicle})
-  
+    this.router.navigate(['/vehicle-edit',vehicle.vehicleId]);
   }
+
   deleteVehicleParent(vehicleId: any){
 
     this.searchByVhclId="";
@@ -68,12 +70,16 @@ deleteErrorMessage:any;
    
     this.searchByVhclIdErrorMessage="";
     this.vehicleService.getVehicle(searchByVhclId).subscribe((response: any)=>{
-      this.vehicles = response;
+    console.log(response);
+   
+     this.vehicles=[response];
+
     },
     (exception: any)=>{
       console.log(JSON.stringify(exception));
       this.searchByVhclIdErrorMessage = exception.error.message;
     });
   }
+
  
 }

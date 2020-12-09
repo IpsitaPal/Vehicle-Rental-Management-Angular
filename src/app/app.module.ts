@@ -17,7 +17,6 @@ import { BookingShowComponent } from './booking/booking-list/booking-show/bookin
 import { VehicleListComponent } from './vehicle/vehicle-list/vehicle-list.component';
 import { VehicleAddComponent } from './vehicle/vehicle-add/vehicle-add.component';
 import { VehicleUpdateComponent } from './vehicle/vehicle-update/vehicle-update.component';
-import { VehicleViewComponent } from './vehicle/vehicle-view/vehicle-view.component';
 import { VehicleShowComponent } from './vehicle/vehicle-list/vehicle-show/vehicle-show.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
@@ -34,6 +33,8 @@ import { BookingbyListComponent } from './booking/bookingby-list/bookingby-list.
 import { BookingbyShowComponent } from './booking/bookingby-list/bookingby-show/bookingby-show.component';
 import { LogoutComponent } from './user/logout/logout.component';
 import { ProfileComponent } from './customer/profile/profile.component';
+import { VehicleViewComponent } from './vehicle/vehicle-view/vehicle-view.component';
+
 
 @NgModule({
   declarations: [

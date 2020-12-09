@@ -21,6 +21,7 @@ export class BookingListComponent implements OnInit {
   deleteErrorMessage:any;
   searchByCustIdErrorMessage: any;
   paymentErrorMessage: String = '';
+  errorMessage: String = '';
   //searchByCustIdErrorMessage: any;
   
   constructor(private bookingService: BookingService, private router: Router,
@@ -34,7 +35,8 @@ export class BookingListComponent implements OnInit {
     this.bookingService.getAllBookings().subscribe((response: any)=>{
       console.log("Get all"+ response);
       this.bookings=response;
-    })
+    },
+    (exception: any) => {    this.errorMessage = exception.error.message;          })
   }
 
   displayAddForm(){
@@ -60,7 +62,7 @@ export class BookingListComponent implements OnInit {
       this.deleteErrorMessage = exception.error.message;
     });*/
     this.paymentService.deletePayment(paymentId).subscribe((response: any) => {
-      window.location.reload();
+      this.router.navigate(['/booking']); 
     });
   }
 
@@ -98,6 +100,7 @@ export class BookingListComponent implements OnInit {
     this.searchByCustIdErrorMessage="";
     this.bookingService.getBookingsByCustomer(searchByCustId).subscribe((response: any)=>{
       this.bookings = response;
+      //this.router.navigate(['/booking']); 
     },
     (exception: any)=>{
       console.log(JSON.stringify(exception));

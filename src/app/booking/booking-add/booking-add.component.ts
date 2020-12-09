@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Booking } from 'src/app/booking';
+import { CommonService } from 'src/app/common.service';
 import { Customer } from 'src/app/customer';
 import { Driver } from 'src/app/driver';
+import { User } from 'src/app/user';
 import { Vehicle } from 'src/app/vehicle';
+import { VehicleService } from 'src/app/vehicle/vehicle.service';
 import { BookingService } from '../booking.service';
 
 @Component({
@@ -12,9 +15,8 @@ import { BookingService } from '../booking.service';
   styleUrls: ['./booking-add.component.css']
 })
 export class BookingAddComponent implements OnInit {
-  //bookingForm:any;
-  isCustomer: boolean = true;
-
+  
+  role: String;
   vehicleErrorMessage: any;
   formValidErrorMessage:any;
   driverNew: Driver = {driverId: 0, firstName: '', lastName: '', contactNumber: '',
@@ -25,24 +27,27 @@ export class BookingAddComponent implements OnInit {
     location: '', capacity: '', chargesPerKM: 0, fixedCharges: 0, driver: this.driverNew }
   booking: Booking ={bookingId: 0, bookingDate: new Date(Date.now()), bookedTillDate: new Date(Date.now()), bookingDescription: " ", 
     totalCost: 0,distance: 0, customer: this.customerNew, vehicle: this.vehicleNew}
-   // booking: any='';
-  constructor(private bookingService: BookingService, private router: Router ) { }
+  
+  constructor(private bookingService: BookingService, private router: Router, 
+    private service: CommonService, private vehicleService: VehicleService) {
+    this.booking.customer = this.service.customer;
+    this.role = this.service.getRole();
+   }
 
   ngOnInit(): void {
   }
 
-  // later route it to payment
   submitAddForm(bookingForm:any){
     this.vehicleErrorMessage ='';
-    console.log(JSON.stringify(this.booking))
+    this.vehicleService.getVehicle(this.booking.vehicle.vehicleId)
+      .subscribe((response: any)=>{
+                    this.booking.vehicle = response;
+                  });
+
     this.bookingService.addBooking(this.booking).subscribe((response: any)=>{
-      console.log(response);
-      if(this.isCustomer){
-      this.router.navigate(['/booking']);
-      }
-      else{
-        this.router.navigate(['/bookingby/101']);
-      }
+        console.log("What" + JSON.stringify(response));
+        this.booking = response;
+        this.router.navigate(['/payment/add/', this.booking.bookingId]);
     },
     (exception: any)=>{
       console.log(JSON.stringify(exception));
@@ -50,4 +55,5 @@ export class BookingAddComponent implements OnInit {
       this.vehicleErrorMessage = exception.error.message;
     });
   }
+
 }

@@ -5,7 +5,7 @@
 			<div class="navbar-brand"> 
 				<i class="material-icons">directions_car</i>
 				<span id="txt1">
-					Vehicle Rental Management System
+			    Rent and Ride
 				</span>
 			</div>
 	  </div>
@@ -27,7 +27,7 @@
         <a [routerLink]="['/booking']">Bookings</a>
       </li>
       <li *ngIf= "getUser() == 'customer'" class="nav-item">
-        <a [routerLink]="['/booking']">Book a Car</a>
+        <a [routerLink]="['/bookingby']">Book a Car</a>
       </li>
       <li *ngIf= "getUser() == 'admin'" class="nav-item">
         <a [routerLink]="['/payment']">Payments</a>
@@ -37,6 +37,9 @@
       </li>
 			<li *ngIf= "getUser() != ''" class="nav-item">
         <a [routerLink]="['/logout']">Sign out</a>
+      </li>
+      <li *ngIf= "getUser() == ''" class="nav-item">
+        <a [routerLink]="['/customer/add']">Register</a>
       </li>
       <li *ngIf= "getUser() == ''" class="nav-item">
         <a [routerLink]="['/login']">Sign in</a>
